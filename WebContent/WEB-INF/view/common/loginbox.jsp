@@ -3,7 +3,21 @@
 <c:set var="context" value="<%=application.getContextPath()%>" /> --%>
 
 <div id = "login-box">
-			<a onclick="move('member','move','user_login_form')">LOGIN</a>&nbsp;&nbsp;&nbsp;
-			<a href="">JOIN</a>
-</div >
+			<a id= "moveLoginForm" >LOGIN</a>&nbsp;&nbsp;&nbsp;
+			<a id="moveJoinForm">JOIN</a>
+		</div >
+			
+<script>
+document.getElementById('moveLoginForm')
+.addEventListener('click',function(){  //콜백함수(연이어서 호출되는 함수)
+	alert('클릭 이벤트 체크!');
+	common.move('member','move','user_login_form');	
+		});
 		
+ document.getElementById('moveJoinForm')
+.addEventListener('click',function(){  //콜백함수(연이어서 호출되는 함수)
+	alert('클릭 이벤트 체크!');
+	common.move('member','move','joinForm');	
+		});
+</script>
+

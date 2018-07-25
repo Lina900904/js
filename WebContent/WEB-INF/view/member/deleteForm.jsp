@@ -14,25 +14,43 @@
 
 
 <h1>회원 삭제</h1>
-<%-- <form id = "delete_Form" action="${context}/member.do">
+
+<form id = "deleteForm" >
 아이디: <input type="text" name = "id" />
 비밀번호:<input type="text" name = "pass" />
 <input type="hidden" name = "action" value = "delete"/>
 <input type="hidden" name = "page" value = "delete" />
-<input type="submit" value= "전송" />
-</form>
-	 --%>
-<form name = "deleteForm" action="${context}/member.do"
-onsubmit="return deleteMove()">
-아이디: <input type="text" name = "id" />
-비밀번호:<input type="text" name = "pass" />
-<input type="hidden" name = "action" value = "delete"/>
-<input type="hidden" name = "page" value = "delete" />
-<input type="submit" value= "전송" />
+<input id = "deleteFormBtn" type="submit" value= "전송" />
 </form>
 
-
-	
+<script>
+member.setId;
+member.setPassword;
+alert(member.loginValiation());
+document.getElementById('deleteFormBtn').addEventListener('click',
+		function() {
+			alert('회원삭제 태그 내부');
+			var form = document.getElementById('deleteForm');
+			form.action="${context}/member.do";
+			form.method = "post";
+			var userid = form.userid.value;
+			var pass = form.pass.value;
+			
+			if(userid == ""){
+				alert('아이디입력필요');
+				return false;
+			}
+			var password = form.password.value;
+			if(password == ""){
+				alert('비밀번호입력필요');
+				return false;
+			}
+				
+			return (true);
+			
+			alert('입력한 id password  : ' + userid+pass);
+});
+</script>	
 	
 	
 	

@@ -10,11 +10,7 @@
 	<title>JOINFORM</title>
 </head>
 <body>
-	<script>
-function moveForm(){
-	return false;
-	}
-</script>
+
 	
 
 <!-- <form action="/member/user_login_form.do">

@@ -23,7 +23,7 @@ public class Carrier { //해당 페이지로 이동하는 역할만
 			HttpServletResponse response, String url) {
 		try {
 			response.sendRedirect(request.getContextPath()+url);
-
+		
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

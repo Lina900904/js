@@ -32,12 +32,12 @@ public class CommonController extends HttpServlet {
 				System.out.println("r.toString() 값"+r.toString());//	CONTEXT, CSS, JS, IMG
 				System.out.println("request.getSession() 값"+request.getSession()); //org.apache.catalina.session.StandardSessionFacade@7da3d2cd
 				System.out.println("r.toString().toLowerCase()값 "+r.toString().toLowerCase()); //js, img;
-			/*	if(i==0) {
+			if(i==0) {
 	                request.getSession().setAttribute(r.toString().toLowerCase(), request.getContextPath());
 	            }else {
 	                System.out.println(request.getContextPath()+"/resources/"+r.toString().toLowerCase());
 	                request.getSession().setAttribute(r.toString().toLowerCase(), request.getContextPath()+"/resources/"+r.toString().toLowerCase());
-	            }*/
+	            }
 			}
 
 		// HttpSession session = request.getSession(); //가지고와서 객체를 만드는 형태 ,associated된

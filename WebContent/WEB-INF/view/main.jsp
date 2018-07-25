@@ -7,10 +7,12 @@
 <html lang="en">
 <jsp:include page="common/head.jsp" />
 <script>
-function mainMove() {
-	return true;
-}
+
 </script>
+	<script> /* 전역메소드, body안에 두어야함 */
+
+
+	</script>
 <body>
 <div id = "wrapper">
 		<div id = "header">
@@ -26,19 +28,13 @@ function mainMove() {
 	<div id = "footer"></div>
 
 
-	<script> /* 전역메소드, body안에 두어야함 */
-		function move(domain, action, page) {
-			console.log('클릭 테스트 성공! ${context}');
-			alert('클릭 테스트 성공! ${context}');				
-			location.href = "${context}/" + domain + ".do?action=" + action
-					+ "&page=" + page;
-		}
-	
-	</script>
 
 
 
 
+
+</body>
+</html>
 
 
 	<%-- 
@@ -85,6 +81,3 @@ function mainMove() {
 	</table>
 
  --%>
-
-</body>
-</html>

@@ -5,7 +5,7 @@
  --%>
 <!doctype html>
 <html lang="en">
-
+<title>ADMIN</title>
 <jsp:include page="../common/head.jsp" />
 <body>
 	<div id="wrapper">
@@ -22,11 +22,9 @@
 
 	<div id="footer"></div>
 	<script >
-function move(domain, action, page) {
-	cosole.log("테스트성공 ${context}");
-	alert('테스트성공 ${context}');
-	location.href="${context}/"+domain+".do?action="+action+"&page"+page;
-}
+	
+
+	
 </script>
 
 

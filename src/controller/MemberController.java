@@ -46,12 +46,14 @@ public class MemberController extends HttpServlet {
 				break;
 			
 			case LOGIN :
-				if(request.getAttribute("match").equals("TRUE")) {
+				System.out.println("!!!!!!!!!#####");
+				
+		if(request.getAttribute("match").equals("TRUE")) {
 					Carrier.forword(request, response);
 				}else {
 					Carrier.redirect(request, response, "/member.do?action=move&page=user_login_result");
 				}
-		
+
 				break;
 			case RETRIEVE :
 				Carrier.redirect(request, response, "/member.do?action=move&page=searchIdResult");
