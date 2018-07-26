@@ -47,9 +47,9 @@ String ctx = application.getContextPath();  //서블릿의 설정값을 가져�
 					var password = form.password.value;
 					member.setId(userid);
 					member.setPassword(password);
-
+				
 					
-					if(member.loginValidation()){
+					if(service.loginValidation(member)){
 						form.submit();
 					}
 				});

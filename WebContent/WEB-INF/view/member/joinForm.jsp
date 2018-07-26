@@ -31,6 +31,7 @@ PASSWORD <input type="text" name = "password" /><br />
 document.getElementById('joinFormBtn')
 .addEventListener('click', 
 		function () {
+	var member = new Member();
 	alert('조인폼태그내부');
 	var form = document.getElementById('join-Form');
 	form.action="${context}/member.do";
@@ -41,8 +42,8 @@ document.getElementById('joinFormBtn')
 	member.setId(userid);
 	member.setPassword(password);
 	member.setSsn(ssn);
-	alert(userid);
-	if(member.joinValidation()){
+
+	if(service.joinValidation(member)){
 		form.submit();
 	}
 	

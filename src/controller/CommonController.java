@@ -26,7 +26,7 @@ public class CommonController extends HttpServlet {
 		for (Resources r : Resources.values()) {		
 				request.getSession().setAttribute(
 						r.toString().toLowerCase(),
-						(i == 0)?
+						(i == 0)? //js 키값에 아래 애들을 줌
 								request.getContextPath() :			
 									request.getContextPath()
 									+ "/resources/" + r.toString().toLowerCase());
