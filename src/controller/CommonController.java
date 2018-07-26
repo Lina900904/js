@@ -18,28 +18,28 @@ public class CommonController extends HttpServlet {
 
 	enum Resources {
 		CONTEXT, CSS, JS, IMG
-		
-
 	}
 
 	protected void service(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		int i = 0;
 		for (Resources r : Resources.values()) {		
-				request.getSession().setAttribute(r.toString().toLowerCase(),(i == 0)?request.getContextPath():			
-					request.getContextPath().toLowerCase() + "Resources" + r.toString().toLowerCase());
+				request.getSession().setAttribute(
+						r.toString().toLowerCase(),
+						(i == 0)?
+								request.getContextPath() :			
+									request.getContextPath()
+									+ "/resources/" + r.toString().toLowerCase());
 				
-				System.out.println("r.toString() 값"+r.toString());//	CONTEXT, CSS, JS, IMG
-				System.out.println("request.getSession() 값"+request.getSession()); //org.apache.catalina.session.StandardSessionFacade@7da3d2cd
-				System.out.println("r.toString().toLowerCase()값 "+r.toString().toLowerCase()); //js, img;
-			if(i==0) {
+			i++;
+			/*if(i==0) {
 	                request.getSession().setAttribute(r.toString().toLowerCase(), request.getContextPath());
 	            }else {
 	                System.out.println(request.getContextPath()+"/resources/"+r.toString().toLowerCase());
 	                request.getSession().setAttribute(r.toString().toLowerCase(), request.getContextPath()+"/resources/"+r.toString().toLowerCase());
-	            }
+	            }*/
 			}
-
+		System.out.println(" JS 값==========>"+request.getSession().getAttribute("js")); //org.apache.catalina.session.StandardSessionFacade@7da3d2cd
 		// HttpSession session = request.getSession(); //가지고와서 객체를 만드는 형태 ,associated된
 		// 관계
 		// request는 자신의 일부만 session에게 넘겨주므로 죽지않고 남아있음

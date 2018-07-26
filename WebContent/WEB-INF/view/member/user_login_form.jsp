@@ -12,7 +12,7 @@ String ctx = application.getContextPath();  //서블릿의 설정값을 가져�
 <head>
 <meta charset="UTF-8" />
 <title>USERLOGIN</title>
-<jsp:include page="../common/head.jsp" />
+<jsp:include page="../common/head.jsp" /> <!-- 헤드에서 펑션을 만들었기 때문에 아래서 쓸수있음 -->
 </head>
 
 <body>
@@ -38,6 +38,7 @@ String ctx = application.getContextPath();  //서블릿의 설정값을 가져�
 	
 		document.getElementById('loginFormBtn').addEventListener('click',
 				function() {
+					var member= new Member();
 					alert('폼태그 내부');
 					var form = document.getElementById('user_login_form');
 					form.action = "${context}/member.do";
