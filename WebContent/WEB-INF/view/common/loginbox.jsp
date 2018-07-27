@@ -37,5 +37,3 @@ document.getElementById('moveLoginForm')
 
 
 
-
-

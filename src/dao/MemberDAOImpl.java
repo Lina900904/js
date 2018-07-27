@@ -34,9 +34,16 @@ public class MemberDAOImpl implements MemberDAO {
 					DBConstant.PASSWORD)
 					.getConnection()
 					.createStatement()
-					.executeQuery(
+					.executeUpdate(
 							String.format(MemberQuery.INSERT_MEMBER.toString(),						           
-						             member.getId(),member.getPassword(), member.getSsn(),member.getName()));
+						             member.getId(),
+						             member.getPassword(), 
+						             member.getSsn(),
+						             member.getName(),
+						             member.getGender(),
+						             member.getRoll(),
+						             member.getTeamId(),
+						             member.getAge()));
 		} catch (Exception e) {   
 			e.printStackTrace();
 		}

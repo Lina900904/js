@@ -20,7 +20,7 @@ String ctx = application.getContextPath();  //서블릿의 설정값을 가져�
 	<div id="user-Login-Layout">
 		<h1>로그인</h1>
 
-		<form id="user_login_form">
+		<form id="user_login_form" name = "user_login_form">
 			ID : <br>
 			<input type="text" name="userid" /><br /> 
 			PassWord: <br />
@@ -34,23 +34,24 @@ String ctx = application.getContextPath();  //서블릿의 설정값을 가져�
 	</div>
 
 	<script>
-
 	
 		document.getElementById('loginFormBtn').addEventListener('click',
-				function() {
-					var member= new Member();
-					alert('폼태그 내부');
-					var form = document.getElementById('user_login_form');
-					form.action = "${context}/member.do";
-					form.method = "post";
-					var userid = form.userid.value;		
-					var password = form.password.value;
-					member.setId(userid);
-					member.setPassword(password);
-				
+				function() {	
+			var form = document.getElementById('user_login_form');
+			var x = service.nullChecker(
+					[form.userid.value,form.password.value]);
+					/* var userid = form.userid.value;		
+					var password = form.password.value; */
+			/* 		member.setId(form.userid.value);
+					member.setPassword(form.password.value); */
 					
-					if(service.loginValidation(member)){
+					if(x.checker){		
+					
+						form.action = "${context}/member.do";
+						form.method = "post";
 						form.submit();
+					}else{
+						alert(x.text);
 					}
 				});
 	</script>

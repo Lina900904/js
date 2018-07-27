@@ -21,8 +21,12 @@ public enum MemberQuery {
 		              + "    ( MEM_ID  , "
 		              + "   PASSWORD   , "
 		              + "   SSN  , "
-		              + "   NAME ) "
-		              + "    VALUES ( '%s' , '%s' , '%s' , '%s' ) ";
+		              + "   NAME , "
+		              + "   GENDER , "
+		              + "   ROLL , "
+		              + "   TEAM_ID , "
+		              + "   AGE ) "
+		              + "    VALUES ( '%s' , '%s' , '%s' , '%s' , '%s' , '%s', '%s' , '%s' ) ";
 			break;
 		case 	SELECT_ID :
 			query = " SELECT MEM_ID , "

@@ -35,6 +35,7 @@ public class MemberController extends HttpServlet {
 					Carrier.forword(request, response);
 				break;
 			case JOIN: 
+			
 				Carrier.redirect(request,response,"/member.do?action=move&page=user_login_form");
 				break;
 			case COUNT: 
@@ -48,7 +49,7 @@ public class MemberController extends HttpServlet {
 			case LOGIN :
 				System.out.println("!!!!!!!!!#####");
 				
-		if(request.getAttribute("match").equals("TRUE")) {
+				if(request.getAttribute("match").equals("TRUE")) {
 					Carrier.forword(request, response);
 				}else {
 					Carrier.redirect(request, response, "/member.do?action=move&page=user_login_result");

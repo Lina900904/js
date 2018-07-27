@@ -1,8 +1,10 @@
 package command;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
 import javax.servlet.http.HttpServletRequest;
 
-import com.sun.xml.internal.ws.api.streaming.XMLStreamReaderFactory.Default;
 
 import domain.MemberBean;
 import enums.Domain;
@@ -28,10 +30,29 @@ public class CreateCommand extends Command{
 			joinm.setName(request.getParameter("name"));
 			joinm.setPassword(request.getParameter("password"));
 			joinm.setSsn(request.getParameter("ssn"));
+			joinm.setAge(request.getParameter("age"));
+			joinm.setGender(request.getParameter("gender"));
+			joinm.setTeamId(request.getParameter("teamid"));
+			joinm.setRoll(request.getParameter("roll"));
+			joinm.setSubject(ParamMap.gatValuse(request,"subject"));
+			
 			MemberServiceImpl.getInstance().membercreateJoin(joinm);	
 			System.out.println("회원가입 성공");
 		
 			break;
+		/*	joinm.setAge(request.getParameter(String.valueOf(
+					Integer.valueOf(new SimpleDateFormat("yyyy").format(new Date()))-1900+1
+					-
+					Integer.parseInt(joinm.getSsn().substring(0, 2)))));
+					
+
+			if(request.getParameter("gender").substring(8, 1).equals("1")) {
+				joinm.setGender("남자");
+			}else {
+				joinm.setGender("여자");
+			}*/
+		
+		
 
 		default:
 			break;

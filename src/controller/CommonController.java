@@ -49,4 +49,3 @@ public class CommonController extends HttpServlet {
 		request.getRequestDispatcher(Term.WEBPATH.toString() + Term.MAIN.toString()).forward(request, response);
 	}
 }
-
