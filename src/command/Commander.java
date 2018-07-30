@@ -44,6 +44,7 @@ public class Commander {
 			cmd = new SearchCommand(request);
 			break;
 		case UPDATE :
+			System.out.println("업데이트 진입");
 			cmd = new UpdateCommand(request);
 			break;
 		case DELETE :

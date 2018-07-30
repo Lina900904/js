@@ -43,7 +43,7 @@ PASSWORD <input type="text" name = "password" /><br />
 <option value="minfe">민폐</option>
 </select><br />
 
-수강과목
+<!-- 수강과목
 <input type="checkbox" name = "subject" value="java" checked="checked" />Java
 <input type="checkbox" name = "subject" value="clang"  />C언어
 <input type="checkbox" name = "subject" value="jsp"  />JSP
@@ -51,7 +51,7 @@ PASSWORD <input type="text" name = "password" /><br />
 <input type="checkbox" name = "subject" value="nodejs"  />Nodejs
 <input type="checkbox" name = "subject" value="Linux"  />Linux
 <input type="checkbox" name = "subject" value="html"  />HTML
-<input type="checkbox" name = "subject" value="spring"  />SPRING
+<input type="checkbox" name = "subject" value="spring"  />SPRING -->
 
 <input id = "joinFormBtn" type="button" value = "전송" />
 
@@ -92,7 +92,7 @@ document.getElementById('joinFormBtn')
 		alert(member.getAge());
 		alert(member.getTeamId());
 		alert(member.getSubject());
-		alert(member.getRoll());
+		alert(member.getRoll()); 
 		
 		form.submit();
 	}else{

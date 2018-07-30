@@ -8,11 +8,13 @@ public enum MemberQuery {
 		switch(this) {
 		case LOGIN :
 			query=" SELECT MEM_ID , "
-		              + "    TEAM_ID , "
+		              + "   TEAM_ID , "
 		              + "    NAME ,  "		        
 		              + "    ROLL ,  "
 		              + "    PASSWORD ,  "
-		              + "    SSN        "
+		              + "    SSN ,        "
+		              + "    AGE ,        "
+		              + "    GENDER        "
 		              + "    FROM MEMBER  "
 		              + "    WHERE MEM_ID LIKE '%s' AND PASSWORD LIKE '%s' ";
 			break;
@@ -34,7 +36,9 @@ public enum MemberQuery {
 		              + "    NAME ,  "		        
 		              + "    ROLL ,  "
 		              + "    PASSWORD ,  "
-		              + "    SSN        "
+		              + "    SSN ,       "
+		              + "    AGE ,       "
+		              + "    GENDER        "
 		              + "    FROM MEMBER  " 
 					+ "  WHERE MEM_ID LIKE '%s' " ;
 			break;
@@ -44,9 +48,11 @@ public enum MemberQuery {
 			
 			break;
 		case 	UPDATE_MEMBER :
-			query = " UPDATE MEMBER " + 
-					" SET PASSWORD = '%s' " + 
-					" WHERE MEM_ID = '%s' AND PASSWORD = '%s' ";
+			query = " UPDATE MEMBER " 
+					+ " SET PASSWORD = '%s' ,"
+					+ " ROLL = '%s' ,"
+					+ " TEAM_ID = '%s' "  
+					+ " WHERE MEM_ID = '%s' ";
 			
 			break;
 		case 	DELETE_MEMBER :

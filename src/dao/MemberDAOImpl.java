@@ -44,6 +44,7 @@ public class MemberDAOImpl implements MemberDAO {
 						             member.getRoll(),
 						             member.getTeamId(),
 						             member.getAge()));
+	
 		} catch (Exception e) {   
 			e.printStackTrace();
 		}
@@ -137,7 +138,10 @@ public class MemberDAOImpl implements MemberDAO {
            m.setRoll(rs.getString("ROLL"));
            m.setPassword(rs.getString("PASSWORD"));
            m.setSsn(rs.getString("SSN"));
-           m.setTeamId(rs.getString("TEAM_ID"));            
+           m.setTeamId(rs.getString("TEAM_ID"));
+           m.setAge(rs.getString("AGE"));
+           m.setGender(rs.getString("GENDER"));
+           System.out.println(m);
 			}
 		} catch (Exception e) {   
 			e.printStackTrace();
@@ -174,30 +178,22 @@ public class MemberDAOImpl implements MemberDAO {
 	}
 
 	@Override
-	public MemberBean updateMember(MemberBean member) {
-		MemberBean m = null;
-		String oldPass = member.getPassword().split("/")[0];
-		String newPass = member.getPassword().split("/")[1];
-		
-		
+	public void updateMember(MemberBean member) {
+		System.out.println("==DAO UPDATE==");
 		try {
 			DatabaseFactory.createDatabase(
 					Vendor.ORACLE, DBConstant.USERNAME, DBConstant.PASSWORD)
 			.getConnection()
 			.createStatement()
 			.executeUpdate(String.format(MemberQuery.UPDATE_MEMBER.toString(),        
-					newPass,member.getId(), oldPass));
-		
-		
-			 m = new MemberBean();
-	
-	
-                
-			
+					member.getPassword(),
+					member.getRoll(),
+					member.getTeamId(),
+					member.getId()));
+			System.out.println("==DAO UPDATE SUCCESS==");
 		} catch (Exception e) {   
 			e.printStackTrace();
 		}
-		return m;
 	}
 
 	@Override
@@ -252,6 +248,10 @@ public class MemberDAOImpl implements MemberDAO {
                 m.setTeamId(rs.getString("TEAM_ID"));                  
                 m.setRoll(rs.getString("ROLL"));
                 m.setPassword(rs.getString("PASSWORD"));
+                m.setSsn(rs.getString("SSN"));
+                m.setAge(rs.getString("AGE"));
+                m.setGender(rs.getString("GENDER"));
+            	System.out.println("dao받은값====="+m);
                 }
 			
 		} catch (Exception e) {   

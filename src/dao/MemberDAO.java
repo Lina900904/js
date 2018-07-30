@@ -17,7 +17,7 @@ public interface MemberDAO {
 	public List<MemberBean> selectMemberSome(String word);
 	public MemberBean selectMemberOne(String id);
 	public int countMember();
-	public MemberBean updateMember(MemberBean member);
+	public void updateMember(MemberBean member);
 	public MemberBean deleteMember(MemberBean member);
 	public MemberBean login(MemberBean member);
 

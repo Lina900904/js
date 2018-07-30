@@ -10,6 +10,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import command.Carrier;
 import command.SearchCommand;
@@ -50,9 +51,12 @@ public class MemberController extends HttpServlet {
 				System.out.println("!!!!!!!!!#####");
 				
 				if(request.getAttribute("match").equals("TRUE")) {
+					request.getSession().setAttribute("user", request.getAttribute("user"));
+					Sentry.cmd.setPage("mypage");
+					Sentry.cmd.execute();				
 					Carrier.forword(request, response);
 				}else {
-					Carrier.redirect(request, response, "/member.do?action=move&page=user_login_result");
+					Carrier.redirect(request, response, "/member.do?action=move&page=user_login_form");
 				}
 
 				break;
@@ -65,6 +69,9 @@ public class MemberController extends HttpServlet {
 				break;
 			case UPDATE : 
 				Carrier.redirect(request, response, "/member.do?action=move&page=updateResult");
+				
+			
+				
 				
 				break;
 			case DELETE : 

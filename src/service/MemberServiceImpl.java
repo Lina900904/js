@@ -41,8 +41,8 @@ public class MemberServiceImpl implements MemeberService {
 	}
 
 	@Override
-	public boolean memberUpdate(MemberBean member) {
-		return (MemberDAOImpl.getInstance().updateMember(member)!=null);
+	public void memberUpdate(MemberBean member) {
+		MemberDAOImpl.getInstance().updateMember(member);
 
 	}
 
@@ -60,8 +60,8 @@ public class MemberServiceImpl implements MemeberService {
 
 	@Override
 	public boolean login(MemberBean member) {
-
-		return (MemberDAOImpl.getInstance().login(member) != null);
+		return (MemberDAOImpl.getInstance().login(member)!=null);
+		
 	}
 
 }

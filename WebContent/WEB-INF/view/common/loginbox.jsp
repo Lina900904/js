@@ -13,7 +13,10 @@
 <script>
 document.getElementById('moveLoginForm')
 .addEventListener('click',function(){  //콜백함수(연이어서 호출되는 함수)
-	router.move(['${context}','member','move','user_login_form']);
+	router.move({context : '${context}',
+		domain : 'member',
+		action : 'move',
+		page : 'user_login_form'}); //배열 json
 	alert('클릭 이벤트 체크!');
 	//new Common().move('${context}','member','move','user_login_form');	
 	
@@ -21,7 +24,11 @@ document.getElementById('moveLoginForm')
 		
  document.getElementById('moveJoinForm')
 .addEventListener('click',function(){  //콜백함수(연이어서 호출되는 함수)
-	router.move(['${context}','member','move','joinForm']);
+	router.move({context :'${context}',
+		domain:'member',
+		action:'move',
+		page:'joinForm'});
+	
 	alert('클릭 이벤트 체크!');
 	// new Common().move('${context}','member','move','joinForm');	
 		});

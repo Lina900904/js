@@ -1,7 +1,7 @@
 
 body{
 	font-family : 'malgun Gothic', 'Verdana';
-	background-color: #ff80c0;
+	background-color: #ffeefd;
 	color: #400080;
 	margin: 0; /* 밖 간격 */
 	padding: 0; /* 안 간격 */
@@ -128,8 +128,20 @@ div#footer{
 	font-size: 1.5em;
 }
 
+style>table,th,td{border : 1px solid black}
 
 
+table#mypage-table td, tr{
+    width:100px;
+    height :20px;
+    text-align: center;
+    font-size: 1.0em;
+    border: 1px solid black;
+}
+
+td#mypage-img{
+    width:300px;
+}
 
 
 
