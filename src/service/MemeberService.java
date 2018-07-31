@@ -11,7 +11,7 @@ public interface MemeberService {
 	public List<MemberBean> memberfindByName(String name);
 	public MemberBean memberfindById(String id);
 	public void memberUpdate(MemberBean member);
-	public boolean memberDelete(MemberBean member);
+	public void memberDelete(MemberBean member);
 	public int memberCount();
 	public boolean login(MemberBean member);
 

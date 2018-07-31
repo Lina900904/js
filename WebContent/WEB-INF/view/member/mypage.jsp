@@ -13,10 +13,14 @@
 
 <body>
 
-	<form id="mypage">
+	<form id="mypage">	
+	<h1> MY PAGE </h1>
 		<table id="mypage-table">
+	
 			<tr>
-				<td id="mypage-img" rowspan="7" colspan="2">
+		
+				<td id="mypage-img" rowspan="7" colspan="2" >
+				<img src="resources/img/home/turtle.PNG" />
 				<td>아이디</td>
 				<td>${user.name}</td>
 			</tr>
@@ -50,6 +54,8 @@
 		</table>
 	<a id="updateBtn">
 		<input type="button"  value="정보수정" /></a>
+		<a id="deleteBtn">	
+		<input type="button"  value="회원탈퇴" /></a>
 
 		<script>
 			document.getElementById('updateBtn').addEventListener(
@@ -59,6 +65,16 @@
 							domain : 'member',
 							action : 'move',
 							page : 'updateForm'}); 
+						submit();
+					
+					});
+			document.getElementById('deleteBtn').addEventListener(
+					'click', function() {
+						alert('수정확인버튼 클릭함');
+						router.move({context : '${context}',
+							domain : 'member',
+							action : 'move',
+							page : 'deleteForm'}); 
 						submit();
 					
 					});

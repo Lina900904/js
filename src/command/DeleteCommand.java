@@ -18,7 +18,7 @@ public class DeleteCommand extends Command{
 		setRequest(request);
 		setDomain(request.getServletPath().substring(1, request.getServletPath().indexOf(".")));
 		setAction(request.getParameter("action"));
-		setPage(request.getParameter("page"));
+		//setPage(request.getParameter("page"));
 		execute();
 		
 	}
@@ -28,9 +28,13 @@ public class DeleteCommand extends Command{
 		switch (Domain.valueOf(Sentry.cmd.domain.toUpperCase())) {
 		case MEMBER:
 			MemberBean dm = new MemberBean();
-			dm.setId(request.getParameter("id"));
+			// dm.setId(request.getParameter("id"));
+			dm.setId(((MemberBean) request.getSession().getAttribute("user")).getId());
 			dm.setPassword(request.getParameter("pass"));
+			
 			MemberServiceImpl.getInstance().memberDelete(dm);
+			request.getSession().invalidate();
+			
 			break;
 
 		default:

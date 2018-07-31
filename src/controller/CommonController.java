@@ -45,7 +45,7 @@ public class CommonController extends HttpServlet {
 		// request는 자신의 일부만 session에게 넘겨주므로 죽지않고 남아있음
 		// request가 자료를 넘겨줘야만 session은 객체가 됨, 그전엔 객체가 아님
 		// 더이상 context를 설정할 필요없음
-		request.getSession().setAttribute(Term.CONTEXT.toString(), request.getContextPath());
+		//request.getSession().setAttribute(Term.CONTEXT.toString(), request.getContextPath());
 		request.getRequestDispatcher(Term.WEBPATH.toString() + Term.MAIN.toString()).forward(request, response);
 	}
 }

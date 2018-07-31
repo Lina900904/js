@@ -47,8 +47,8 @@ public class MemberServiceImpl implements MemeberService {
 	}
 
 	@Override
-	public boolean memberDelete(MemberBean member) {
-		return (MemberDAOImpl.getInstance().deleteMember(member)!=null);
+	public void memberDelete(MemberBean member) {
+		MemberDAOImpl.getInstance().deleteMember(member);
 		
 	}
 

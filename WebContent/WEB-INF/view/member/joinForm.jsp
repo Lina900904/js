@@ -21,10 +21,10 @@ NAME <input type="text" name = "name" /><br />
 PASSWORD <input type="text" name = "password" /><br />
 주민등록번호 <input type="text" name = "ssn" /><br />
 <br />
-<input type="hidden" name = "action" value = "join" />
-<input type="hidden" name = "page" value = "joinResult" />
-<input type="hidden" name = "gender" />
-<input type="hidden" name = "age" />
+<!-- <input type="hidden" name = "action" value = "join" />
+<input type="hidden" name = "page" value = "joinResult" /> -->
+<!-- <input type="hidden" name = "gender" />
+<input type="hidden" name = "age" /> -->
 
 <br />
 소속팀
@@ -43,7 +43,7 @@ PASSWORD <input type="text" name = "password" /><br />
 <option value="minfe">민폐</option>
 </select><br />
 
-<!-- 수강과목
+수강과목
 <input type="checkbox" name = "subject" value="java" checked="checked" />Java
 <input type="checkbox" name = "subject" value="clang"  />C언어
 <input type="checkbox" name = "subject" value="jsp"  />JSP
@@ -51,16 +51,14 @@ PASSWORD <input type="text" name = "password" /><br />
 <input type="checkbox" name = "subject" value="nodejs"  />Nodejs
 <input type="checkbox" name = "subject" value="Linux"  />Linux
 <input type="checkbox" name = "subject" value="html"  />HTML
-<input type="checkbox" name = "subject" value="spring"  />SPRING -->
+<input type="checkbox" name = "subject" value="spring"  />SPRING
 
-<input id = "joinFormBtn" type="button" value = "전송" />
+<br /><input id = "joinFormBtn" type="button" value = "전송" />
 
 </form>
 </div>
 
 <script>
-
-
 
 document.getElementById('joinFormBtn')
 .addEventListener('click', 
@@ -74,25 +72,34 @@ document.getElementById('joinFormBtn')
 				form.name.value]);
 
 	if(x.checker){	
-
 		form.action="${context}/member.do";
 		form.method="post";		
-	
 	member.join([form.userid.value,
 					form.password.value,
 					form.ssn.value,
 					form.name.value]);
-		
 	
-		form.gender.value = member.getGender();
-		form.age.value = member.getAge();				
-
-		
-		alert(member.getGender());  
-		alert(member.getAge());
-		alert(member.getTeamId());
-		alert(member.getSubject());
-		alert(member.getRoll()); 
+	/* 	var node = document.createElement('input');
+		node.innerHTML = '<input type="hidden" name = "action" value = "join" />'
+		+'<input type="hidden" name = "gender" />'
+		+'<input type="hidden" name = "age" />';
+		form.appendChild(node); */
+	
+		var json = [
+			{name:'action',value:'join'},
+			{name:'age', value: member.getGender()},
+			{name:'gender',value: member.getAge()}	];
+		var i =0;
+		for(i in json){
+			var node = document.createElement('input');	
+			node.setAttribute('type','hidden');
+			node.setAttribute('name',json[i].name);
+			node.setAttribute('value',json[i].value);
+			/* form.gender.value = member.getGender(); hidden에 있는 value값
+			form.age.value = member.getAge();	 */
+	
+			form.appendChild(node);
+		}
 		
 		form.submit();
 	}else{

@@ -51,14 +51,13 @@ public class MemberController extends HttpServlet {
 				System.out.println("!!!!!!!!!#####");
 				
 				if(request.getAttribute("match").equals("TRUE")) {
-					request.getSession().setAttribute("user", request.getAttribute("user"));
+					//request.getSession().setAttribute("user", request.getAttribute("user"));
 					Sentry.cmd.setPage("mypage");
-					Sentry.cmd.execute();				
+					Sentry.cmd.execute();	
 					Carrier.forword(request, response);
 				}else {
 					Carrier.redirect(request, response, "/member.do?action=move&page=user_login_form");
 				}
-
 				break;
 			case RETRIEVE :
 				Carrier.redirect(request, response, "/member.do?action=move&page=searchIdResult");
@@ -68,24 +67,13 @@ public class MemberController extends HttpServlet {
 				Carrier.redirect(request, response, "/member.do?action=move&page=searchTeamResult");
 				break;
 			case UPDATE : 
-				Carrier.redirect(request, response, "/member.do?action=move&page=updateResult");
-				
-			
-				
-				
+				Carrier.redirect(request, response, "");
 				break;
 			case DELETE : 
-				Carrier.redirect(request, response, "/member.do?action=move&page=deleteResult");
+				Carrier.redirect(request, response, "");
 				break;
-				
-				
-		
 			default:
 				break;
-				
-	
-				
-
 
 	}
 

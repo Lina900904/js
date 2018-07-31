@@ -16,7 +16,7 @@ public class CreateCommand extends Command{
 		setRequest(request);
 		setDomain(request.getServletPath().substring(1,request.getServletPath().indexOf(".")));
 		setAction(request.getParameter("action"));
-		setPage(request.getParameter("page"));
+		//setPage("page");
 		execute(); //this.이 생략되어있다
 	}
 	

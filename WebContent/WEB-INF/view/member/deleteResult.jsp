@@ -8,7 +8,7 @@
 	<title>DELETE_RESULT</title>
 </head>
 <body>
-회원삭제용
+회원삭제 성공~
 
 
 </body>

@@ -202,18 +202,12 @@ public class MemberDAOImpl implements MemberDAO {
 		MemberBean m =null;
 		
 		try {
-			ResultSet rs =  DatabaseFactory.createDatabase(
+			 DatabaseFactory.createDatabase(
 					Vendor.ORACLE, DBConstant.USERNAME, DBConstant.PASSWORD)
 			.getConnection()
 			.createStatement()
-			.executeQuery(String.format(MemberQuery.DELETE_MEMBER.toString(),        
+			.executeUpdate(String.format(MemberQuery.DELETE_MEMBER.toString(),        
 		              member.getId(),member.getPassword()));
-			
-		
-
-
-				m = new MemberBean();
-
 				
 	
                 

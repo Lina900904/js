@@ -5,10 +5,12 @@
 	<title>UPDATE_FORM</title>
 <jsp:include page="../common/head.jsp" />
 <body>
-<form id ="update-Form" name="update-Form">
+<form id ="update-Form" name="update-Form"> 
+<h1> MY PAGE </h1>
 		<table id="mypage-table">
 			<tr>
-				<td id="mypage-img" rowspan="8" colspan="2">
+				<td id="mypage-img" rowspan="7" colspan="2" >
+				<img src="resources/img/home/turtle.PNG" />
 				<td>아이디</td>
 				<td>${user.name}</td>
 			</tr>
@@ -56,8 +58,8 @@
 		</table>
 
 <input id = "updateFormBtn" type="button" value= "전송" /><br />
-<input type="hidden" name = "action" value = "update"/><br />
-<input type="hidden" name = "page" value = "mypage" />
+<!-- <input type="hidden" name = "action" value = "update"/><br />
+<input type="hidden" name = "page" value = "mypage" /> -->
 
 </form>
 
@@ -71,12 +73,21 @@
 		//alert('team.options[i].value+과 같다')
 		if(roll.options[i].value==='${user.roll}'){
 			//alert('team.options[i].value+과 같다')
-			roll.option[i].setAttribute("selected","selected");
+			roll.options[i].setAttribute("selected","selected");
 		}
 	}
+
+	
 	
 	document.getElementById('updateFormBtn')
 	.addEventListener('click',function(){
+ 		var node = document.createElement('input');
+		node.innerHTML = '<input type="hidden" name = "action" value = "update"/>';
+		form.appendChild(node);
+		 
+
+		
+		
 	alert('수정완료버튼 클릭함');
 	
 	form.action = "${context}/member.do";
