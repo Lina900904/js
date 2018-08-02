@@ -12,10 +12,7 @@
 </head>
 <body>
 
-
-
-리스트용
-	<%-- 	
+	<table>
 		<tr>
 			<td>아이디</td>
 			<td>이름</td>
@@ -28,7 +25,7 @@
 	List<MemberBean> lst = MemberServiceImpl.getInstance().memberList();
 	for(int i =0; i<lst.size(); i++){		
 	%>
-		<tr class = "height 100">
+		<tr>
 			<td><h3><%= lst.get(i).getId()%></h3></td>
 			<td><h3><%= lst.get(i).getName()%></h3>	</td>			
 			<td><h3><%= lst.get(i).getPassword()%></h3></td>
@@ -39,8 +36,7 @@
 		
 			<%}	%>
 	</table>
-	<input type="hidden" name = "action" value = "memberlist" />
 	
-	 --%>
+	
 </body>
 </html>

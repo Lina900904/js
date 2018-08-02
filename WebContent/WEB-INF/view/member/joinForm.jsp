@@ -97,7 +97,7 @@ document.getElementById('joinFormBtn')
 			node.setAttribute('value',json[i].value);
 			/* form.gender.value = member.getGender(); hidden에 있는 value값
 			form.age.value = member.getAge();	 */
-	
+	 
 			form.appendChild(node);
 		}
 		

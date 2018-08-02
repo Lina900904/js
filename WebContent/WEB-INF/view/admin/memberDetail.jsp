@@ -1,5 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<c:set var="context" value="<%=application.getContextPath()%>" />
+
 
 
 <!doctype html>
@@ -15,44 +18,46 @@
 
 	<form id="mypage">	
 	
-	
 	<h1> MY PAGE </h1>
-		<table id="mypage-table">
 	
+		<table id="mypage-table">
+			
+				
 			<tr>
-		
+	
 				<td id="mypage-img" rowspan="7" colspan="2" >
 				<img src="resources/img/home/turtle.PNG" />
 				<td>아이디</td>
-				<td>${user.name}</td>
+				<td>${member.id}</td>
+				
 			</tr>
+			
 			<tr>
 				
 				<td>비밀번호</td>
-				<td>${user.password}</td>
+				<td>${member.password}</td>
 			</tr>
 			<tr>
 				<td>나이</td>
-				<td>${user.age}</td>
+				<td>${member.age}</td>
 			</tr>
 			
 			<tr>
 				<td>성별</td>
-				<td>${user.gender}</td>
+				<td>${member.gender}</td>
 			</tr>
 			
 			<tr>
 				<td>역할</td>
-				<td>${user.roll}</td>
+				<td>${member.roll}</td>
 				
 			</tr>
 			
 			<tr>
 				<td>팀아이디</td>
-				<td>${user.teamId}</td>
+				<td>${member.teamId}</td>
 			</tr>
-				
-			
+
 		</table>
 	<a id="updateBtn">
 		<input type="button"  value="정보수정" /></a>

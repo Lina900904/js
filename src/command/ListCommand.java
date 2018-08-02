@@ -26,6 +26,8 @@ public class ListCommand extends Command{
 	request.setAttribute("list", MemberServiceImpl.getInstance().memberList());
 
 	
+	
+
 	super.execute();
 	}
 

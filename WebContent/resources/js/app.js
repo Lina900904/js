@@ -15,31 +15,6 @@ var router = (()=> { // 싱글쓰레드모드
 
 })();
 
-/*var service= (()=>{
-	return {
-		nullChecker: x=>{
-			for(var i =0;i<x.length; i++){					
-				if(x[i] ===''){ 
-					
-					alert(i+'입력필요');
-					return false;					
-				}}	return true;	
-			}
-	}})();
-*/
-/*var service= (()=>{
-	return {
-		nullChecker: x=>{
-			var i =0;
-			for(i in x){	//for each loop					
-				if(x[i] ===''){ 					
-					alert(i+'입력필요');
-					return false;					
-				}}	return true;	
-			}
-	}})();
-*/
-
 var service= (()=>{
 	return {
 		nullChecker: x=>{
@@ -54,14 +29,77 @@ var service= (()=>{
 				}
 			}
 			return j;	
+			},
+			
+			addClass : (dom,cName)=>{
+				var arr= cName.split(" ");
+				if(arr.indexOf(cName)== -1){
+					dom.className += " " +cName;
+				}
 			}
+			
 	};
 	})();
 
 
+var admin = (()=>{
+	return{
+	check : x=>{
+	var isAdmin= confirm('관리자 입니까?');
+		if(isAdmin){
+			var password = prompt('관리자 비번을 입력하세요');
+			if(password == ''){
+					router.move({
+						context : x,
+						domain : 'admin',
+						action : 'list',
+						page : 'main'});
+			}else{
+				alert('비번을 잘못 입력했습니다');
+				
+			}
+		}else{
+			alert('관리자만 접근이 허용됩니다.');
+		}
+		
+	},
+	main:x=>{
 
+		service.addClass(document.getElementById('seachBox'),'width80pt center');
+		service.addClass(document.getElementById('searchWord'),'width300px floatRight');
+		service.addClass(document.getElementById('searchOption'),'floatRight ');
+		service.addClass(document.getElementById('searchBtn'),'floatRight ');
+		service.addClass(document.getElementById('content-boxTab'),'width90pt center marginTop30px');
+		service.addClass(document.getElementById('contentBoxMeta'),'bgcolorisYellow ');
 
+		for(var i of document.querySelectorAll('.username') ){ //Array타입 .은클래스
+			i.style.color = 'blue';
+			i.style.cursor = 'pointer';
+			i.addEventListener('click',function(){
+			location.href = x+'/admin.do?action=retrieve&page=memberDetail&id='// get방식
+			+this.getAttribute('id');//this는 for문에서만 사용~~
+				
+			});
+		};
+		//콜백함수 내부의 this와 즉시실행(이파이패턴)의 this는 다름
+		//위 this는  x(최초의 객체)를 가르킴
 
+		document.getElementById('searchBtn')
+		.addEventListener('click', function(){
+			var word = document.getElementById('searchWord');
+			var option = document.getElementById('searchOption');
+			
+				location.href = (option.value === 'userid')?
+						x+'/admin.do?action=retrieve&page=memberDetail&id='
+							+ word.value
+					:
+						x+'/admin.do?action=search&page=main&option='+option.value+'&word='+word.value
+							
+					; 
+		});  
+
+	}
+};})();
 var member=(()=> { //클로져를 사용한 객체 (보안을 위해)
 		var _id,_ssn,_password,_name, _roll,  _teamId, _age, _gender, _subject; // 중복된 정보인지 체크함
 		var setId = (userid)=>{this._userid= userid;};
@@ -125,7 +163,32 @@ var member=(()=> { //클로져를 사용한 객체 (보안을 위해)
 				};
 		})();
 		
-		
+
+/*var service= (()=>{
+	return {
+		nullChecker: x=>{
+			for(var i =0;i<x.length; i++){					
+				if(x[i] ===''){ 
+					
+					alert(i+'입력필요');
+					return false;					
+				}}	return true;	
+			}
+	}})();
+*/
+/*var service= (()=>{
+	return {
+		nullChecker: x=>{
+			var i =0;
+			for(i in x){	//for each loop					
+				if(x[i] ===''){ 					
+					alert(i+'입력필요');
+					return false;					
+				}}	return true;	
+			}
+	}})();
+*/
+
 		/*this.setId= function(x){
 			this.id=x;
 		}

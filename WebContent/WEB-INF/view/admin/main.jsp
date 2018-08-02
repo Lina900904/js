@@ -10,7 +10,7 @@
 <body>
 	<div id="wrapper">
 		<div id="header">
-			<jsp:include page="../common/titlebox.jsp" />
+		<h1>관리자 페이지</h1>
 			<jsp:include page="../common/loginbox.jsp" />
 			</div> <!-- header end -->
 			<jsp:include page="../common/admin_menubox.jsp" />

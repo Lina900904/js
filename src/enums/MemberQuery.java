@@ -66,7 +66,9 @@ public enum MemberQuery {
 		              + "    NAME ,  "		        
 		              + "    ROLL ,  "
 		              + "    PASSWORD ,  "
-		              + "    SSN        "
+		              + "    SSN ,        "
+		              + "    GENDER  ,      "
+		              + "    AGE        "
 		              + "    FROM MEMBER  " ;
 			
 			break;
@@ -77,7 +79,9 @@ public enum MemberQuery {
 		              + "    NAME ,  "		        
 		              + "    ROLL ,  "
 		              + "    PASSWORD ,  "
-		              + "    SSN        "
+		              + "    SSN ,      "
+		              + "    GENDER  ,      "
+		              + "    AGE        "
 		              + "    FROM MEMBER  " 
 					+ "  WHERE TEAM_ID LIKE '%s' " ;
 			

@@ -26,16 +26,37 @@ public class SearchCommand extends Command {
 
 	@Override
 	public void execute() {
+		String searchOption=request.getParameter("option");
+		String searchWord = request.getParameter("word");
+		String page = request.getParameter("page");
+		String action = request.getParameter("action");
+		String domain = super.domain;
+		System.out.println(searchOption);		
+		System.out.println(searchWord);		
+		System.out.println(page);		
+		System.out.println(action);		
+		System.out.println(domain);		
+	
+
+		request.setAttribute("list", MemberServiceImpl.getInstance()
+				.memberfindByName(searchOption+"/"+searchWord));
 		
-		switch (Domain.valueOf(Sentry.cmd.domain.toUpperCase())) {
-		case MEMBER:
+		
+		
+/*		select*from 
+		where searchOption like '%searchWord%'*/
+		
+		
+	/*	case MEMBER:
 			this.member=
+			
 			MemberServiceImpl.getInstance().memberfindByName(request.getParameter("teamid"));
 			break;
+		
 
 		default:
-			break;
-		}
+			break;*/
+		
 		super.execute();
 	
 	

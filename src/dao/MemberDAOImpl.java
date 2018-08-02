@@ -69,6 +69,8 @@ public class MemberDAOImpl implements MemberDAO {
 				m.setRoll(rs.getString("ROLL"));
 				m.setSsn(rs.getString("SSN"));
 				m.setTeamId(rs.getString("TEAM_ID"));
+				m.setAge(rs.getString("AGE"));
+				m.setGender(rs.getString("GENDER"));
 				lst.add(m);
 				
 	
@@ -86,13 +88,24 @@ public class MemberDAOImpl implements MemberDAO {
 	@Override
 	public List<MemberBean> selectMemberSome(String word) {// 팀아이디
 		List<MemberBean> teamList = new ArrayList<>();
+		String sql = " SELECT MEM_ID , "
+	              + "   TEAM_ID , "
+	              + "    NAME ,  "		        
+	              + "    ROLL ,  "
+	              + "    PASSWORD ,  "
+	              + "    SSN ,        "
+	              + "    AGE ,        "
+	              + "    GENDER        "
+	              + "    FROM MEMBER  "
+	              + "    WHERE  " + word.split("/")[0] 
+					+ " LIKE '%" + word.split("/")[1]+"%' ";
 		MemberBean m = null;
 		try {
-		Class.forName(DBConstant.ORACLE_DRIVER);
+		
 		ResultSet rs= DatabaseFactory.createDatabase(Vendor.ORACLE, DBConstant.USERNAME, DBConstant.PASSWORD)
 				.getConnection()
 				.createStatement()
-				.executeQuery(String.format(MemberQuery.SELECT_TEAM.toString(), word));
+				.executeQuery(sql);
 		 
 			while(rs.next()) {
 			m = new MemberBean();
@@ -102,6 +115,8 @@ public class MemberDAOImpl implements MemberDAO {
 				m.setRoll(rs.getString("ROLL"));
 				m.setSsn(rs.getString("SSN"));
 				m.setTeamId(rs.getString("TEAM_ID"));
+				m.setAge(rs.getString("AGE"));
+				m.setGender(rs.getString("GENDER"));
 				teamList.add(m);
 
 			}

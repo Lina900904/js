@@ -44,7 +44,7 @@ public class MemberController extends HttpServlet {
 				break;
 			case LIST : 
 				System.out.println("리스트~~~");
-				Carrier.redirect(request,response,"/member.do?action=move&page=memberList");				
+				 Carrier.redirect(request,response,"/member.do?action=move&page=memberList");				
 				break;
 			
 			case LOGIN :

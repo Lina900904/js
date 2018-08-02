@@ -27,16 +27,21 @@ public class AdminController extends HttpServlet {
 		
 				
 			switch(Action.valueOf(Sentry.cmd.getAction().toUpperCase())) {
-			case MOVE :
-					Carrier.forword(request, response);
+			case LIST :
+				System.out.println("%%%%%%%%%%%list 진입");
+				//Carrier.redirect(request,response,"/member.do?action=move&page=memberList");				
+				Carrier.forword(request,response);
 				break;
-			
+			case RETRIEVE :
+				Carrier.forword(request, response);
+				break;
+				
+			case SEARCH :
+			Carrier.forword(request,response);			
+			break;
+		
 			default:
 				break;
-				
-	
-				
-
 
 	}
 

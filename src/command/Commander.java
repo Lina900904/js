@@ -31,6 +31,7 @@ public class Commander {
 			break;
 		case LIST :
 			cmd = new ListCommand(request);
+			break;
 		case LOGIN : 
 			System.out.println("로그인 진입");
 			cmd = new LoginCommand(request);
@@ -40,7 +41,8 @@ public class Commander {
 			cmd = new RetrieveCommand(request);
 			break;
 		case SEARCH :
-			List<MemberBean> mems= ((SearchCommand) Sentry.cmd).getMember();
+			System.out.println("찾기 진입");
+			//List<MemberBean> mems= ((SearchCommand) Sentry.cmd).getMember();
 			cmd = new SearchCommand(request);
 			break;
 		case UPDATE :
