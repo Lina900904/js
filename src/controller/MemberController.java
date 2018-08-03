@@ -40,7 +40,7 @@ public class MemberController extends HttpServlet {
 				Carrier.redirect(request,response,"/member.do?action=move&page=user_login_form");
 				break;
 			case COUNT: 
-				
+				Carrier.forword(request, response);
 				break;
 			case LIST : 
 				System.out.println("리스트~~~");

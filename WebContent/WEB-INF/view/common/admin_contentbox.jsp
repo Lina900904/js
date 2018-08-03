@@ -39,6 +39,14 @@
 			href = "${context}/admin.do?action=retrieve&page=memberDetail&id=${member.id}" >${member.name}</a></td>  --%>
 			</tr>
 		</c:forEach>
+		<tr>
+		<td colspan = "6">
+		전체회원수: 	${list.size()}<br /><br />
+		<c:forEach begin="1" end="${list.size()%5==0?list.size()/5 :list.size()/5+1}" step="1" var="i">
+			<span>${i}</span>
+		</c:forEach>
+		</td>
+		</tr>
 	</table>
 
 </div>

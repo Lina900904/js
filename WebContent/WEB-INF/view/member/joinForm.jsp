@@ -87,8 +87,8 @@ document.getElementById('joinFormBtn')
 	
 		var json = [
 			{name:'action',value:'join'},
-			{name:'age', value: member.getGender()},
-			{name:'gender',value: member.getAge()}	];
+			{name:'gender', value: member.getGender()},
+			{name:'age',value: member.getAge()}	];
 		var i =0;
 		for(i in json){
 			var node = document.createElement('input');	

@@ -2,12 +2,8 @@ package dao;
 
 import java.sql.*;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.*;
 
-import com.sun.corba.se.spi.orbutil.fsm.Guard.Result;
-import com.sun.org.apache.regexp.internal.recompile;
-import com.sun.xml.internal.ws.developer.MemberSubmissionAddressing.Validation;
 
 import domain.*;
 import enums.*;
@@ -15,6 +11,8 @@ import factory.*;
 
 import oracle.jdbc.driver.DBConversion;
 import pool.*;
+import template.PstmtQuery;
+import template.QueryTemplate;
 
 
 public class MemberDAOImpl implements MemberDAO {
@@ -86,8 +84,34 @@ public class MemberDAOImpl implements MemberDAO {
 	}
 
 	@Override
-	public List<MemberBean> selectMemberSome(String word) {// 팀아이디
-		List<MemberBean> teamList = new ArrayList<>();
+	public List<MemberBean> selectMemberSome(String word) {
+		QueryTemplate q = new PstmtQuery();
+		List<MemberBean> list = new ArrayList<>();
+		HashMap<String, Object> map= new HashMap<>();
+		map.put("column", word.split("/")[0]);
+		map.put("value", word.split("/")[1]);
+		map.put("table", Domain.MEMBER);
+		q.play(map);
+		for(Object s : q.getList()) {
+			list.add((MemberBean) s);
+		}
+				
+		
+		return list;
+		
+	}
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+/*		List<MemberBean> teamList = new ArrayList<>();
 		String sql = " SELECT MEM_ID , "
 	              + "   TEAM_ID , "
 	              + "    NAME ,  "		        
@@ -127,8 +151,8 @@ public class MemberDAOImpl implements MemberDAO {
 		
 
 		
-		return teamList;
-	}
+		return teamList;*/
+
 
 
 
