@@ -24,7 +24,7 @@ public class MemberDAOImpl implements MemberDAO {
 
 	@Override
 	public void insertMember(MemberBean member) {
-
+//
 		try { 
 		DatabaseFactory.createDatabase(
 					Vendor.ORACLE, 

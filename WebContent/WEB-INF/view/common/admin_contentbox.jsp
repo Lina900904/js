@@ -27,7 +27,6 @@
 			<th>팀 명</th>
 		</tr>
 		<c:forEach items="${list}" var="member"> 
-
 			<tr>
 				<td>${member.id}</td>
 				<td><a class = "username" id="${member.id}" >${member.name}</a></td> 
@@ -41,16 +40,14 @@
 		</c:forEach>
 		<tr>
 		<td colspan = "6">
-		전체회원수: 	${list.size()}<br /><br />
-		<c:forEach begin="1" end="${list.size()%5==0?list.size()/5 :list.size()/5+1}" step="1" var="i">
+		전체회원수: 	${count}<br /><br />
+		<c:forEach begin="1" end="${pageNum}" step="1" var="i">
 			<span>${i}</span>
 		</c:forEach>
 		</td>
 		</tr>
 	</table>
-
 </div>
-	
 		<script>
 	admin.main('${context}');
 	</script>
