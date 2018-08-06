@@ -297,9 +297,6 @@ public class MemberDAOImpl implements MemberDAO {
 
 	@Override
 	public List<MemberBean> selectList(Map<?, ?> param) {
-
-		
-	
 		MemberBean m = new MemberBean();
 		List<MemberBean> selectList = new ArrayList<>();
 		String beginRow = (String) param.get("beginRow");
