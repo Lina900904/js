@@ -2,6 +2,7 @@ package service;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 import dao.*;
 import domain.*;
@@ -63,5 +64,11 @@ public class MemberServiceImpl implements MemeberService {
 		return (MemberDAOImpl.getInstance().login(member)!=null);
 		
 	}
+
+	@Override
+	public List<MemberBean> getList(Map<?, ?> param) {
+		return MemberDAOImpl.getInstance().selectList(param);
+	}
+
 
 }

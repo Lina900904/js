@@ -1,6 +1,8 @@
 package command;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -23,19 +25,32 @@ public class ListCommand extends Command{
 	
 	@Override
 	public void execute() {
-	request.setAttribute("list", MemberServiceImpl.getInstance().memberList());
-	
-	request.setAttribute("count", MemberServiceImpl.getInstance().memberCount());
-	
-	int count = (int) request.getAttribute("count");
-	
-	request.setAttribute("pageNum", count%5==0?count/5 :count/5+1 );
-	 System.out.println(request.getAttribute("count"));
+		request.setAttribute("count", MemberServiceImpl.getInstance().memberCount());
+		Map<String, Object> param = new HashMap<>();
+		String beginRow = "1";
+		String endRow = "5";
+		param.put("beginRow", beginRow);
+		param.put("endRow", endRow);
+		List<MemberBean> mems = MemberServiceImpl.getInstance().getList(param);
+		
+		 // request.setAttribute("list", MemberServiceImpl.getInstance().memberList());
+		request.setAttribute("seletList", MemberServiceImpl.getInstance().getList(param));		
+		request.setAttribute("beginPage", "1" );
+		//request.setAttribute("endPage", count%5==0?count/5 :count/5+1 );
+		int count = (int) request.getAttribute("count");
+		request.setAttribute("endPage", (count/Integer.parseInt(endRow))<6 
+				? (count%Integer.parseInt(endRow)==0?count/Integer.parseInt(endRow) 
+						:count/Integer.parseInt(endRow)+1) : Integer.parseInt(endRow));
 
-	
+
 	
 
 	super.execute();
+	}
+
+	private Map<?, ?> param() {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 

@@ -7,9 +7,9 @@ import javax.servlet.http.HttpServletResponse;
 
 import domain.MemberBean;
 import lombok.Data;
+
+
 @Data
-
-
 public class Command implements Order{
 
 

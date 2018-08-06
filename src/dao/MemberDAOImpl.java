@@ -284,6 +284,7 @@ public class MemberDAOImpl implements MemberDAO {
                 m.setSsn(rs.getString("SSN"));
                 m.setAge(rs.getString("AGE"));
                 m.setGender(rs.getString("GENDER"));
+                
             	System.out.println("dao받은값====="+m);
                 }
 			
@@ -294,6 +295,45 @@ public class MemberDAOImpl implements MemberDAO {
 		return m;
 	}
 
+	@Override
+	public List<MemberBean> selectList(Map<?, ?> param) {
+
+		
+	
+		MemberBean m = new MemberBean();
+		List<MemberBean> selectList = new ArrayList<>();
+		String beginRow = (String) param.get("beginRow");
+		String endRow = (String) param.get("endRow");
+		System.out.println("====시작행====="+beginRow);
+		System.out.println("====끝행====="+endRow);
+		try {
+			ResultSet rs =  DatabaseFactory.createDatabase(
+					Vendor.ORACLE, DBConstant.USERNAME, DBConstant.PASSWORD)
+			.getConnection()
+			.createStatement()
+			.executeQuery(String.format(MemberQuery.GET_LIST.toString(),        
+					beginRow, endRow));
+
+			while(rs.next()) {
+				m = new MemberBean();
+                m.setId(rs.getString("MEM_ID"));
+                m.setName(rs.getString("NAME"));
+                m.setTeamId(rs.getString("TEAM_ID"));                  
+                m.setRoll(rs.getString("ROLL"));
+                m.setPassword(rs.getString("PASSWORD"));
+                m.setSsn(rs.getString("SSN"));
+                m.setAge(rs.getString("AGE"));
+                m.setGender(rs.getString("GENDER"));
+                selectList.add(m);
+            	System.out.println("dao받은값====="+m);
+                }
+			
+		} catch (Exception e) {   
+			e.printStackTrace();
+		}
+
+		return selectList;
+	}
 
 
 

@@ -26,7 +26,7 @@
 			<th>역할</th>
 			<th>팀 명</th>
 		</tr>
-		<c:forEach items="${list}" var="member"> 
+		<c:forEach items="${seletList}" var="member"> 
 			<tr>
 				<td>${member.id}</td>
 				<td><a class = "username" id="${member.id}" >${member.name}</a></td> 
@@ -40,10 +40,17 @@
 		</c:forEach>
 		<tr>
 		<td colspan = "6">
-		전체회원수: 	${count}<br /><br />
-		<c:forEach begin="1" end="${pageNum}" step="1" var="i">
-			<span>${i}</span>
-		</c:forEach>
+		전체회원수: 	${count}<br />
+		<ul class = "pageBox">
+			<c:forEach begin="${beginPage}" end="${endPage}" step="1"  varStatus="i"> <!-- forloop문 -->
+				<li>
+				<a href="#">${i.index}</a>	
+				</li>
+			</c:forEach>
+			<c:if test="${count gt 25 }" >
+			<li>다음▶</li> 
+			</c:if>
+		</ul>
 		</td>
 		</tr>
 	</table>

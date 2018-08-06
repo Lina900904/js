@@ -1,7 +1,7 @@
 package enums;
 
 public enum MemberQuery {
-	LOGIN, INSERT_MEMBER,SELECT_ID,COUNT_MEMBER,UPDATE_MEMBER,DELETE_MEMBER, SELECT_ALL, SELECT_TEAM, ;	
+	LOGIN, INSERT_MEMBER,SELECT_ID,COUNT_MEMBER,UPDATE_MEMBER,DELETE_MEMBER, SELECT_ALL, SELECT_TEAM, GET_LIST, ;	
 	@Override
 	public String toString() {
 		String query="";
@@ -87,7 +87,18 @@ public enum MemberQuery {
 			
 			break;
 	
-		}
+		
+	case 		GET_LIST :
+		query = " select t.* "
+				+ " from(select rownum seq, m.* "
+				+ " from member m "
+				+ " order by seq desc) t "
+				+ 	" where t.seq between '%s' and '%s' ";
+		
+		break;
+
+	}
+
 	
 	
 		return query;

@@ -21,6 +21,7 @@ public class Carrier { //해당 페이지로 이동하는 역할만
 	
 	public static void redirect(HttpServletRequest request,
 			HttpServletResponse response, String url) {
+		System.out.println("&&&&&&&&&&&&"+request.getContextPath()+url); //GMS-Model2출력됨
 		try {
 			response.sendRedirect(request.getContextPath()+url);
 		

@@ -1,6 +1,7 @@
 package service;
 
 import java.util.List;
+import java.util.Map;
 
 import domain.ExamBean;
 import domain.MemberBean;
@@ -8,6 +9,7 @@ import domain.MemberBean;
 public interface MemeberService {
 	public void membercreateJoin(MemberBean member);
 	public List<MemberBean> memberList();
+	public List<MemberBean> getList(Map<?, ?>param);
 	public List<MemberBean> memberfindByName(String name);
 	public MemberBean memberfindById(String id);
 	public void memberUpdate(MemberBean member);
