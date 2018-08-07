@@ -8,44 +8,32 @@ import enums.Domain;
 import factory.DatabaseFactory;
 import lombok.Data;
 
-public class PstmtQuery extends QueryTemplate {
+public class PstmtQuery2 extends QueryTemplate {
 
 	@Override
 	void initialize() {
 
-			map.put("sql", String.format(
-					" SELECT "
-					+ColumnFinder.find(Domain.MEMBER)
-					+ " FROM %s "
-					+ " WHERE %s "
-					+ " LIKE ? ",
-					map.get("table"),
-					map.get("column")));
-			
-	
-	
-		
+			map.get("spl");
 	}
 
 	@Override
 	void startPlay() {
 		System.out.println("====================");
 		System.out.println(map.get("sql"));
-		
+
 			try {
 				pstmt = DatabaseFactory
 						.createDatabase2(map)
 						.getConnection()
 						.prepareStatement((String)map.get("sql"));
-				pstmt.setString(1, "%"+map.get("value").toString()+"%");
+				
 						
 						
 			} catch (SQLException e) {
 				e.printStackTrace();
 			}
-		}
-		
-		
+
+	}
 	
 
 	@Override

@@ -12,6 +12,7 @@ import factory.*;
 import oracle.jdbc.driver.DBConversion;
 import pool.*;
 import template.PstmtQuery;
+import template.PstmtQuery2;
 import template.QueryTemplate;
 
 
@@ -297,6 +298,25 @@ public class MemberDAOImpl implements MemberDAO {
 
 	@Override
 	public List<MemberBean> selectList(Map<?, ?> param) {
+/*			QueryTemplate p = new PstmtQuery2();
+			List<MemberBean> selectList = new ArrayList<>();
+			HashMap<String, Object> map  = new HashMap<>();
+			String beginRow = (String) param.get("beginRow");
+			String endRow = (String) param.get("endRow");
+			map.put("sql", String.format(MemberQuery.GET_LIST.toString(),        
+					beginRow, endRow));
+			p.play(map);
+
+			
+			for(Object s : p.getList()) {
+				selectList.add((MemberBean) s);
+			}
+			
+		return selectList;
+		
+	}*/
+		
+		
 		MemberBean m = new MemberBean();
 		List<MemberBean> selectList = new ArrayList<>();
 		String beginRow = (String) param.get("beginRow");
@@ -331,7 +351,6 @@ public class MemberDAOImpl implements MemberDAO {
 
 		return selectList;
 	}
-
 
 
 

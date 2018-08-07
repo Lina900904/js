@@ -71,7 +71,7 @@ var admin = (()=>{
 		service.addClass(document.getElementById('searchBtn'),'floatRight ');
 		service.addClass(document.getElementById('content-boxTab'),'width90pt center marginTop30px');
 		service.addClass(document.getElementById('contentBoxMeta'),'bgcolorisYellow ');
-
+		
 		for(var i of document.querySelectorAll('.username') ){ //Array타입 .은클래스
 			i.style.color = 'blue';
 			i.style.cursor = 'pointer';
@@ -80,6 +80,15 @@ var admin = (()=>{
 			+this.getAttribute('id');//this는 for문에서만 사용~~
 				
 			});
+		};
+		for(var i of document.querySelectorAll('.pageNation') ){
+				i.style.color = 'blue';
+				i.style.cursor = 'pointer';
+				i.addEventListener('click',function(){
+				location.href = x+'/admin.do?action=list&page=main&pageNum='
+				+this.getAttribute('id');
+					
+				});
 		};
 		//콜백함수 내부의 this와 즉시실행(이파이패턴)의 this는 다름
 		//위 this는  x(최초의 객체)를 가르킴
@@ -97,6 +106,8 @@ var admin = (()=>{
 							
 					; 
 		});  
+		
+		
 
 	}
 };})();

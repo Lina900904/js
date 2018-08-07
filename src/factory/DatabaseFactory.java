@@ -10,11 +10,12 @@ public class DatabaseFactory {
 	public static Database createDatabase2(Map<String, Object> map) {
 		Database db = null;
 		String driver = "", url = "";
-		switch ((Vendor) map.get("vander")) {
+		System.out.println("MAP~~~~~"+map.get("Vendor"));
+		switch ((Vendor) map.get("Vendor")) {
 		case ORACLE:
 			driver = DBConstant.ORACLE_DRIVER;
 			url = DBConstant.CONNECTION_URL;
-			db = new Oracle(driver, url, (String) map.get("username"), (String) map.get("password"));
+			db = new Oracle(driver, url, (String) map.get("userid"), (String) map.get("password"));
 			break;
 		case MARIADB:
 			driver = DBConstant.MRIADB_DRIVER;

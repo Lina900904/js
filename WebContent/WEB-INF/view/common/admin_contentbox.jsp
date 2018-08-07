@@ -44,10 +44,10 @@
 		<ul class = "pageBox">
 			<c:forEach begin="${beginPage}" end="${endPage}" step="1"  varStatus="i"> <!-- forloop문 -->
 				<li>
-				<a href="#">${i.index}</a>	
+				<a class = "pageNation" id ="${i.index}" >${i.index}</a>	
 				</li>
 			</c:forEach>
-			<c:if test="${count gt 25 }" >
+			<c:if test="${existNext}" >
 			<li>다음▶</li> 
 			</c:if>
 		</ul>
@@ -56,6 +56,10 @@
 	</table>
 </div>
 		<script>
+
+		
+		
+		
 	admin.main('${context}');
 	</script>
 	
