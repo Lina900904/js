@@ -25,57 +25,57 @@ public class ListCommand extends Command{
 	
 	@Override
 	public void execute() {
-		int pageSize = 5;
-	 	int pageCount =0;
-		int pageNumber = 0;
-		int blockSize=0;
-
-		Map<String, Object> param = new HashMap<>();
-		int beginPage = pageNumber-((pageNumber-1)%blockSize-1) ;
-		int endPage =pageCount;	
-		int endRow = pageNumber*pageSize;
-		
-		
-
-	 	int count = MemberServiceImpl.getInstance().memberCount();
-	 	int rowCount  = 0;
-	 	if(rowCount % pageSize==0) {
-	 		int pageCount = rowCount/pageSize;
-	 	}else {
-	 		int pageCount = rowCount/pageSize+1;
+		int pageNumber=0;
+		int pageSize=0;
+		int blockSize=0;	
+		int rowCount=0; 
+		int pageCount=0;
+		int clockCount=0;
+		int beginRow=0;
+		int endRow=0;
+		int beginPage= pageNumber-((pageNumber-1)%blockSize-1) ;; 
+		int endPage=0;
+		int prevBlock=0; 
+		int nextBlock=0;
+		boolean existPrev=false;
+		boolean existNext=false;
+	
+	
+	 	if(rowCount % pageSize>0) {
+	 		pageCount++;
 	 	}
-
-		int prevBlock = beginPage-blockSize;
-		int nextBlock = beginPage-blockSize;
-		int beginRow =0;
-		
 	 	
-
+		  
 	 	if(endPage%pageCount==0) {
 	 		endPage =beginPage*pageSize;
 	 	}else {
 	 		endPage =beginPage*(pageSize+1);
 	 	}
-	 	boolean existPrev = false;
+	 
 	 	if(prevBlock>=0) {
 	 		existPrev = true;
 	 	}
-		boolean existNext = false;
-	 	if(existNext<=pageCount) {
+	
+	 	if(prevBlock<=pageCount) {
 	 		existPrev = true;
 	 	}
 
-		List<MemberBean> mems = MemberServiceImpl.getInstance().getList(param);
-	
-		
-		request.setAttribute("count", MemberServiceImpl.getInstance().memberCount());
-		request.setAttribute("seletList", MemberServiceImpl.getInstance().getList(param));		
+		Map<String, Object> map = new HashMap<>();
+		map.put("beginRow", String.valueOf(beginRow));
+		map.put("endRow", String.valueOf(endRow));
+		Map<String, Object> prame =new HashMap<>();
+		request.setAttribute("existPrev", existPrev);
+		request.setAttribute("existNext", existNext);
+		request.setAttribute("count", rowCount);
+		request.setAttribute("beginPage", beginPage);
+		request.setAttribute("endPage", endPage);
+		request.setAttribute("page", page);
 
 		
 		
 		
 		
-		
+		//팩토리 패턴
 		/* String beginRow = "1";
 			String endRow = "5";
 			param.put("beginRow", beginRow);
