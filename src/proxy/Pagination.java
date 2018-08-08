@@ -9,7 +9,7 @@ public class Pagination implements Proxy {
 	pageCount, blockCount, beginRow, endRow, beginPage, endPage,
 		prevBlock, nextBlock;
 	boolean existPrev, existNext;
-
+//
 	public void carryOut(Object o) {
 		this.pageNumber = (int)o;
 		this.pageSize =5;
@@ -17,7 +17,7 @@ public class Pagination implements Proxy {
 		this.rowCount = MemberServiceImpl.getInstance().memberCount();
 		this.pageCount=(rowCount%pageSize ==0)?rowCount/pageSize: rowCount/pageSize +1;
 		this.blockCount=(pageCount%blockSize ==0)?pageCount/blockSize : pageCount/blockSize+1;
-		this.beginPage = pageNumber*pageSize-(pageSize-1);
+		this.beginRow = pageNumber*pageSize/(pageSize-1);
 		this.endRow = pageNumber*pageSize;
 		this.beginPage= pageNumber-((pageNumber-1)%blockSize);
 		this.endPage= ((beginPage+pageSize-1)<pageCount)?beginPage+blockSize-1:pageCount;

@@ -31,6 +31,11 @@
 				<td>${member.id}</td>
 				
 			</tr>
+			<tr>
+				
+				<td>이름</td>
+				<td>${member.name}</td>
+			</tr>
 			
 			<tr>
 				

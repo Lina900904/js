@@ -39,6 +39,8 @@ public class ListCommand extends Command{
 		request.setAttribute("selectList", MemberServiceImpl.getInstance().getList(param));
 		request.setAttribute("list", MemberServiceImpl.getInstance().memberList());
 		
+
+		
 		
 		
 		//팩토리 패턴

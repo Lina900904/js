@@ -85,15 +85,7 @@ var admin = (()=>{
 		};
 		//콜백함수 내부의 this와 즉시실행(이파이패턴)의 this는 다름
 		//위 this는  x(최초의 객체)를 가르킴
-		document.getElementById('nextBlock').addEventListener('click', function(){
-			alert('next 클릭');
-			i.style.color = 'blue';
-			i.style.cursor = 'pointer';
-			i.addEventListener('click',function(){
-			location.href = x+'/admin.do?action=list&page=main&pageNumber='
-			+this.getAttribute('id');
-			}); 
-			});   
+ 
 		document.getElementById('searchBtn')
 		.addEventListener('click', function(){
 			var word = document.getElementById('searchWord');
@@ -108,7 +100,7 @@ var admin = (()=>{
 					; 
 		});  
 	
-		document.getElementById('prevBlock').addEventListener('click', function(){
+/*		document.getElementById('prevBlock').addEventListener('click', function(){
 			alert('next 클릭');
 			i.style.color = 'blue';
 			i.style.cursor = 'pointer';
@@ -117,6 +109,25 @@ var admin = (()=>{
 			+this.getAttribute('id');
 			}); 
 		});
+		document.getElementById('nextBlock').addEventListener('click', function(){
+			alert('next 클릭');
+			i.style.color = 'blue';
+			i.style.cursor = 'pointer';
+			i.addEventListener('click',function(){
+			location.href = x+'/admin.do?action=list&page=main&pageNumber='
+			+this.getAttribute('id');
+			}); 
+			}); */ 
+		
+		for(var i of document.querySelectorAll('.pageNumber') ){ //Array타입 .은클래스
+			i.style.color = 'blue';
+			i.style.cursor = 'pointer';
+			i.addEventListener('click',function(){
+			location.href = x+'/admin.do?action=list&page=main&pageNumber='
+			+this.getAttribute('id');
+				
+			});
+		};
 
 	}
 };})();
