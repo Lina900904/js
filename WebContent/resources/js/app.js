@@ -72,7 +72,7 @@ var admin = (()=>{
 		service.addClass(document.getElementById('content-boxTab'),'width90pt center marginTop30px');
 		service.addClass(document.getElementById('contentBoxMeta'),'bgcolorisYellow ');
 
-
+//
 		
 		for(var i of document.querySelectorAll('.username') ){ //Array타입 .은클래스
 			i.style.color = 'blue';
