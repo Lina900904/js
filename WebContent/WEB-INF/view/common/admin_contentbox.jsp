@@ -26,7 +26,7 @@
 			<th>역할</th>
 			<th>팀 명</th>
 		</tr>
-		<c:forEach items="${seletList}" var="member"> 
+		<c:forEach items="${selectList}" var="member"> 
 			<tr>
 				<td>${member.id}</td>
 				<td><a class = "username" id="${member.id}" >${member.name}</a></td> 
@@ -40,15 +40,19 @@
 		</c:forEach>
 		<tr>
 		<td colspan = "6">
-		전체회원수: 	${count}<br />
+		전체회원수: 	${page.rowCount}<br />
 		<ul class = "pageBox">
-			<c:forEach begin="${beginPage}" end="${endPage}" step="1"  varStatus="i"> <!-- forloop문 -->
+		<c:if test="${page.existNext}">
+			<li id = "${page.prevBlock}" class = "pageNumber">◀이전</li> 
+			</c:if> 
+			<c:forEach begin="${page.beginPage}" end="${page.endPage}" step="1"  varStatus="i"> <!-- forloop문 -->
 				<li>
-				<a class = "pageNation" id ="${i.index}" >${i.index}</a>	
+				<a  class = "pageNumber" id ="${i.index}" >${i.index}</a>	
+				
 				</li>
 			</c:forEach>
-			<c:if test="${existNext}" >
-			<li>다음▶</li> 
+			<c:if test="${page.existNext}">
+			<li id = "${page.nextBlock}" class = "pageNumber">다음▶</li> 
 			</c:if>
 		</ul>
 		</td>

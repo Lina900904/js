@@ -2,13 +2,13 @@ package enums;
 
 public enum MemberQuery {
 	LOGIN, INSERT_MEMBER,SELECT_ID,COUNT_MEMBER,UPDATE_MEMBER,DELETE_MEMBER, SELECT_ALL, SELECT_TEAM, GET_LIST, ;	
-	@Override
+@Override
 	public String toString() {
 		String query="";
 		switch(this) {
 		case LOGIN :
-			query=" SELECT id , "
-		              + "   teamId , "
+			query=" SELECT MEM_ID , "
+		              + "   TEAM_ID , "
 		              + "    NAME ,  "		        
 		              + "    ROLL ,  "
 		              + "    PASSWORD ,  "
@@ -16,23 +16,23 @@ public enum MemberQuery {
 		              + "    AGE ,        "
 		              + "    GENDER        "
 		              + "    FROM MEMBER  "
-		              + "    WHERE id LIKE '%s' AND PASSWORD LIKE '%s' ";
+		              + "    WHERE MEM_ID LIKE '%s' AND PASSWORD LIKE '%s' ";
 			break;
 		case INSERT_MEMBER :
 			query= "     INSERT INTO MEMBER "
-		              + "    ( id  , "
+		              + "    ( MEM_ID  , "
 		              + "   PASSWORD   , "
 		              + "   SSN  , "
 		              + "   NAME , "
 		              + "   GENDER , "
 		              + "   ROLL , "
-		              + "   teamId , "
+		              + "   TEAM_ID , "
 		              + "   AGE ) "
 		              + "    VALUES ( '%s' , '%s' , '%s' , '%s' , '%s' , '%s', '%s' , '%s' ) ";
 			break;
 		case 	SELECT_ID :
-			query = " SELECT id , "
-		              + "    teamId , "
+			query = " SELECT MEM_ID , "
+		              + "    TEAM_ID , "
 		              + "    NAME ,  "		        
 		              + "    ROLL ,  "
 		              + "    PASSWORD ,  "
@@ -40,7 +40,7 @@ public enum MemberQuery {
 		              + "    AGE ,       "
 		              + "    GENDER        "
 		              + "    FROM MEMBER  " 
-					+ "  WHERE id LIKE '%s' " ;
+					+ "  WHERE MEM_ID LIKE '%s' " ;
 			break;
 		case 	COUNT_MEMBER :
 			query = " SELECT COUNT(*) AS count "
@@ -51,18 +51,18 @@ public enum MemberQuery {
 			query = " UPDATE MEMBER " 
 					+ " SET PASSWORD = '%s' ,"
 					+ " ROLL = '%s' ,"
-					+ " teamId = '%s' "  
-					+ " WHERE id = '%s' ";
+					+ " TEAM_ID = '%s' "  
+					+ " WHERE MEM_ID = '%s' ";
 			
 			break;
 		case 	DELETE_MEMBER :
 			query = " DELETE FROM MEMBER " + 
-					" WHERE id = '%s'  AND PASSWORD = '%s' ";
+					" WHERE MEM_ID = '%s'  AND PASSWORD = '%s' ";
 			
 			break;
 		case 	SELECT_ALL :
-			query = " SELECT id , "
-		              + "    teamId , "
+			query = " SELECT MEM_ID , "
+		              + "    TEAM_ID , "
 		              + "    NAME ,  "		        
 		              + "    ROLL ,  "
 		              + "    PASSWORD ,  "
@@ -74,8 +74,8 @@ public enum MemberQuery {
 			break;
 			
 		case 		SELECT_TEAM :
-			query = " SELECT id , "
-		              + "    teamId , "
+			query = " SELECT MEM_ID , "
+		              + "    TEAM_ID , "
 		              + "    NAME ,  "		        
 		              + "    ROLL ,  "
 		              + "    PASSWORD ,  "
@@ -83,7 +83,7 @@ public enum MemberQuery {
 		              + "    GENDER  ,      "
 		              + "    AGE        "
 		              + "    FROM MEMBER  " 
-					+ "  WHERE teamId LIKE '%s' " ;
+					+ "  WHERE TEAM_ID LIKE '%s' " ;
 			
 			break;
 	

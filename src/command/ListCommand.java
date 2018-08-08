@@ -9,6 +9,8 @@ import javax.servlet.http.HttpServletRequest;
 import domain.MemberBean;
 import enums.Action;
 import enums.Domain;
+import proxy.PageProxy;
+import proxy.Pagination;
 import service.MemberServiceImpl;
 
 public class ListCommand extends Command{
@@ -25,53 +27,17 @@ public class ListCommand extends Command{
 	
 	@Override
 	public void execute() {
-		int pageNumber=0;
-		int pageSize=0;
-		int blockSize=0;	
-		int rowCount=0; 
-		int pageCount=0;
-		int clockCount=0;
-		int beginRow=0;
-		int endRow=0;
-		int beginPage= pageNumber-((pageNumber-1)%blockSize-1) ;; 
-		int endPage=0;
-		int prevBlock=0; 
-		int nextBlock=0;
-		boolean existPrev=false;
-		boolean existNext=false;
-	
-	
-	 	if(rowCount % pageSize>0) {
-	 		pageCount++;
-	 	}
-	 	
-		  
-	 	if(endPage%pageCount==0) {
-	 		endPage =beginPage*pageSize;
-	 	}else {
-	 		endPage =beginPage*(pageSize+1);
-	 	}
-	 
-	 	if(prevBlock>=0) {
-	 		existPrev = true;
-	 	}
-	
-	 	if(prevBlock<=pageCount) {
-	 		existPrev = true;
-	 	}
-
-		Map<String, Object> map = new HashMap<>();
-		map.put("beginRow", String.valueOf(beginRow));
-		map.put("endRow", String.valueOf(endRow));
-		Map<String, Object> prame =new HashMap<>();
-		request.setAttribute("existPrev", existPrev);
-		request.setAttribute("existNext", existNext);
-		request.setAttribute("count", rowCount);
-		request.setAttribute("beginPage", beginPage);
-		request.setAttribute("endPage", endPage);
+		Map<String, Object> param= new HashMap<>();
+		String pageNumber = request.getParameter("pageNumber");
+		PageProxy pxy = new PageProxy();
+		int pn = (pageNumber==null)?1:Integer.parseInt(pageNumber);
+		pxy.carryOut(pn);
+		Pagination page = pxy.getPagination();
+		param.put("beginRow", String.valueOf(page.getBeginRow()));
+		param.put("endRow",  String.valueOf(page.getEndRow()));
 		request.setAttribute("page", page);
-
-		
+		request.setAttribute("selectList", MemberServiceImpl.getInstance().getList(param));
+		request.setAttribute("list", MemberServiceImpl.getInstance().memberList());
 		
 		
 		
