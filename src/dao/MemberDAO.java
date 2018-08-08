@@ -13,14 +13,12 @@ import domain.MemberBean;
 import domain.MemberBean;
 
 public interface MemberDAO {
-	public void insertMember(MemberBean member);
-	public List<MemberBean> selectMemberList();
-	public List<MemberBean> selectList(Map<?, ?>param);
-	public List<MemberBean> selectMemberSome(String word);
-	public MemberBean selectMemberOne(String id);
-	public int countMember();
-	public void updateMember(MemberBean member);
-	public MemberBean deleteMember(MemberBean member);
+	public void intsert(MemberBean member);
+	public List<MemberBean> selectSome(Map<?, ?>param);
+	public MemberBean selectOne(String id);
+	public int count();
+	public void update(Map<?, ?>param);
+	public void delete(MemberBean member);
 	public MemberBean login(MemberBean member);
 
 	

@@ -36,7 +36,7 @@ public class CreateCommand extends Command{
 			joinm.setRoll(request.getParameter("roll"));
 			joinm.setSubject(ParamMap.gatValuse(request,"subject"));
 			
-			MemberServiceImpl.getInstance().membercreateJoin(joinm);	
+			MemberServiceImpl.getInstance().create(joinm);	
 			System.out.println("회원가입 성공");
 		
 			break;

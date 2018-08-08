@@ -30,7 +30,7 @@ public class Commander {
 			cmd =new CreateCommand(request);
 			break;
 		case LIST :
-			cmd = new ListCommand(request);
+			cmd = new SearchCommand(request);
 			break;
 		case LOGIN : 
 			System.out.println("로그인 진입");

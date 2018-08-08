@@ -19,56 +19,46 @@ public class MemberServiceImpl implements MemeberService {
 	}
 
 	@Override
-	public void membercreateJoin(MemberBean member) {
-
-		MemberDAOImpl.getInstance().insertMember(member);
-
-	}
-
-	@Override
-	public List<MemberBean> memberList() {
-		return MemberDAOImpl.getInstance().selectMemberList();
-	}
-
-	@Override
-	public List<MemberBean> memberfindByName(String name) {
-		return MemberDAOImpl.getInstance().selectMemberSome(name);
-	}
-
-	@Override
-	public MemberBean memberfindById(String id) {
-
-		return MemberDAOImpl.getInstance().selectMemberOne(id);
-	}
-
-	@Override
-	public void memberUpdate(MemberBean member) {
-		MemberDAOImpl.getInstance().updateMember(member);
-
-	}
-
-	@Override
-	public void memberDelete(MemberBean member) {
-		MemberDAOImpl.getInstance().deleteMember(member);
+	public void create(MemberBean member) {
+		// TODO Auto-generated method stub
 		
 	}
 
 	@Override
-	public int memberCount() {
+	public List<MemberBean> search(Map<?, ?> param) {
 		// TODO Auto-generated method stub
-		return (MemberDAOImpl.getInstance().countMember());
+		return null;
+	}
+
+	@Override
+	public MemberBean retrieve(String id) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public void modify(Map<?, ?>param) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void remove(MemberBean member) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public int count() {
+		// TODO Auto-generated method stub
+		return 0;
 	}
 
 	@Override
 	public boolean login(MemberBean member) {
-		return (MemberDAOImpl.getInstance().login(member)!=null);
-		
+		// TODO Auto-generated method stub
+		return false;
 	}
 
-	@Override
-	public List<MemberBean> getList(Map<?, ?> param) {
-		return MemberDAOImpl.getInstance().selectList(param);
-	}
-
-
+	
 }

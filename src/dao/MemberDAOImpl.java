@@ -24,7 +24,7 @@ public class MemberDAOImpl implements MemberDAO {
 
 
 	@Override
-	public void insertMember(MemberBean member) {
+	public void intsert(MemberBean member) {
 //
 		try { 
 		DatabaseFactory.createDatabase(
@@ -49,116 +49,10 @@ public class MemberDAOImpl implements MemberDAO {
 		}
 	}
 
-	@Override
-	public List<MemberBean> selectMemberList() {
-
-		List<MemberBean> lst = new ArrayList<>();
-		try {
-			Class.forName(DBConstant.ORACLE_DRIVER);
-			ResultSet rs = DatabaseFactory.createDatabase(Vendor.ORACLE, DBConstant.USERNAME, DBConstant.PASSWORD)
-					.getConnection()
-					.createStatement()
-					.executeQuery(MemberQuery.SELECT_ALL.toString());
-
-			while(rs.next()) {
-				MemberBean m = new MemberBean();
-				m.setId(rs.getString("MEM_ID"));
-				m.setName(rs.getString("NAME"));
-				m.setPassword(rs.getString("PASSWORD"));
-				m.setRoll(rs.getString("ROLL"));
-				m.setSsn(rs.getString("SSN"));
-				m.setTeamId(rs.getString("TEAM_ID"));
-				m.setAge(rs.getString("AGE"));
-				m.setGender(rs.getString("GENDER"));
-				lst.add(m);
-				
 	
-			
-			}
-		} catch (Exception e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-
-	
-		return lst;
-	}
 
 	@Override
-	public List<MemberBean> selectMemberSome(String word) {
-		QueryTemplate q = new PstmtQuery();
-		List<MemberBean> list = new ArrayList<>();
-		HashMap<String, Object> map= new HashMap<>();
-		map.put("column", word.split("/")[0]);
-		map.put("value", word.split("/")[1]);
-		map.put("table", Domain.MEMBER);
-		q.play(map);
-		for(Object s : q.getList()) {
-			list.add((MemberBean) s);
-		}
-				
-		
-		return list;
-		
-	}
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-/*		List<MemberBean> teamList = new ArrayList<>();
-		String sql = " SELECT MEM_ID , "
-	              + "   TEAM_ID , "
-	              + "    NAME ,  "		        
-	              + "    ROLL ,  "
-	              + "    PASSWORD ,  "
-	              + "    SSN ,        "
-	              + "    AGE ,        "
-	              + "    GENDER        "
-	              + "    FROM MEMBER  "
-	              + "    WHERE  " + word.split("/")[0] 
-					+ " LIKE '%" + word.split("/")[1]+"%' ";
-		MemberBean m = null;
-		try {
-		
-		ResultSet rs= DatabaseFactory.createDatabase(Vendor.ORACLE, DBConstant.USERNAME, DBConstant.PASSWORD)
-				.getConnection()
-				.createStatement()
-				.executeQuery(sql);
-		 
-			while(rs.next()) {
-			m = new MemberBean();
-				m.setId(rs.getString("MEM_ID"));
-				m.setName(rs.getString("NAME"));
-				m.setPassword(rs.getString("PASSWORD"));
-				m.setRoll(rs.getString("ROLL"));
-				m.setSsn(rs.getString("SSN"));
-				m.setTeamId(rs.getString("TEAM_ID"));
-				m.setAge(rs.getString("AGE"));
-				m.setGender(rs.getString("GENDER"));
-				teamList.add(m);
-
-			}
-	
-		}catch (Exception e) {
-			e.printStackTrace();
-		}
-		
-
-		
-		return teamList;*/
-
-
-
-
-	@Override
-	public MemberBean selectMemberOne(String id) {
+	public MemberBean selectOne(String id) {
 
 		MemberBean m = null;
 		try {
@@ -193,7 +87,7 @@ public class MemberDAOImpl implements MemberDAO {
 	}
 
 	@Override
-	public int countMember() {
+	public int count() {
 		int count = 0;
 		try {
 			ResultSet rs = DatabaseFactory.createDatabase(
@@ -218,18 +112,22 @@ public class MemberDAOImpl implements MemberDAO {
 	}
 
 	@Override
-	public void updateMember(MemberBean member) {
+	public void update(Map<?, ?>param) {
 		System.out.println("==DAO UPDATE==");
+		Map<?, ?> map = new HashMap<>();
+		
 		try {
 			DatabaseFactory.createDatabase(
 					Vendor.ORACLE, DBConstant.USERNAME, DBConstant.PASSWORD)
 			.getConnection()
 			.createStatement()
-			.executeUpdate(String.format(MemberQuery.UPDATE_MEMBER.toString(),        
-					member.getPassword(),
+			.executeUpdate(String.format(MemberQuery.UPDATE_MEMBER.toString()
+					
+				/*	member.getPassword(),
 					member.getRoll(),
 					member.getTeamId(),
-					member.getId()));
+					member.getId()*/
+					));
 			System.out.println("==DAO UPDATE SUCCESS==");
 		} catch (Exception e) {   
 			e.printStackTrace();
@@ -237,7 +135,7 @@ public class MemberDAOImpl implements MemberDAO {
 	}
 
 	@Override
-	public MemberBean deleteMember(MemberBean member) {
+	public void delete(MemberBean member) {
 
 		MemberBean m =null;
 		
@@ -255,7 +153,7 @@ public class MemberDAOImpl implements MemberDAO {
 		} catch (Exception e) {   
 			e.printStackTrace();
 		}
-		return m;
+
 	}
 
 
@@ -297,7 +195,7 @@ public class MemberDAOImpl implements MemberDAO {
 	}
 
 	@Override
-	public List<MemberBean> selectList(Map<?, ?> param) {
+	public List<MemberBean> selectSome(Map<?, ?> param) {
 /*			QueryTemplate p = new PstmtQuery2();
 			List<MemberBean> selectList = new ArrayList<>();
 			HashMap<String, Object> map  = new HashMap<>();

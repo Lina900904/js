@@ -30,7 +30,7 @@ public class LoginCommand extends Command {
 			request.getSession().setAttribute("user", 
 					MemberServiceImpl
 					.getInstance()
-					.memberfindById(request.getParameter("userid")));
+					.retrieve(request.getParameter("userid")));
 			System.out.println("request user : \n"+request.getAttribute("user"));
 		}else{request.setAttribute("match", "FALSE");
 			}

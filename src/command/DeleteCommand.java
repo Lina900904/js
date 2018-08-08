@@ -32,7 +32,7 @@ public class DeleteCommand extends Command{
 			dm.setId(((MemberBean) request.getSession().getAttribute("user")).getId());
 			dm.setPassword(request.getParameter("pass"));
 			
-			MemberServiceImpl.getInstance().memberDelete(dm);
+			MemberServiceImpl.getInstance().remove(dm);
 			request.getSession().invalidate();
 			
 			break;

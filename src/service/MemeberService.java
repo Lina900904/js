@@ -7,14 +7,12 @@ import domain.ExamBean;
 import domain.MemberBean;
 
 public interface MemeberService {
-	public void membercreateJoin(MemberBean member);
-	public List<MemberBean> memberList();
-	public List<MemberBean> getList(Map<?, ?>param);
-	public List<MemberBean> memberfindByName(String name);
-	public MemberBean memberfindById(String id);
-	public void memberUpdate(MemberBean member);
-	public void memberDelete(MemberBean member);
-	public int memberCount();
+	public void create(MemberBean member);
+	public List<MemberBean> search(Map<?, ?>param);
+	public MemberBean retrieve(String id);
+	public void modify(Map<?, ?>param);
+	public void remove(MemberBean member);
+	public int count();
 	public boolean login(MemberBean member);
 
 
