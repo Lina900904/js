@@ -9,8 +9,8 @@ import domain.MemberBean;
 import enums.Domain;
 import service.MemberServiceImpl;
 
-public class UpdateCommand extends Command{
-	public UpdateCommand(HttpServletRequest request) {
+public class ModifyCommand extends Command{
+	public ModifyCommand(HttpServletRequest request) {
 		setRequest(request);
 		setDomain(request.getServletPath().substring(1, request.getServletPath().indexOf(".")));
 		setAction(request.getParameter("action"));
@@ -21,7 +21,7 @@ public class UpdateCommand extends Command{
 	
 	@Override
 	public void execute() {
-		switch (Domain.valueOf(Sentry.cmd.domain.toUpperCase())) {
+		switch (Domain.valueOf(Receiver.cmd.domain.toUpperCase())) {
 		case MEMBER	:
 			MemberBean member = (MemberBean) request.getSession().getAttribute("user");
 			System.out.println("==변경전==\n"+member);

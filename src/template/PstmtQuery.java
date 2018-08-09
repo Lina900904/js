@@ -12,7 +12,7 @@ public class PstmtQuery extends QueryTemplate {
 
 	@Override
 	void initialize() {
-
+	
 			map.put("sql", String.format(
 					" SELECT "
 					+ColumnFinder.find(Domain.MEMBER)

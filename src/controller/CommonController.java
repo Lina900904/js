@@ -26,26 +26,18 @@ public class CommonController extends HttpServlet {
 		for (Resources r : Resources.values()) {		
 				request.getSession().setAttribute(
 						r.toString().toLowerCase(),
-						(i == 0)? //js 키값에 아래 애들을 줌
+						(i == 0)? 
 								request.getContextPath() :			
 									request.getContextPath()
 									+ "/resources/" + r.toString().toLowerCase());
 				
 			i++;
-			/*if(i==0) {
-	                request.getSession().setAttribute(r.toString().toLowerCase(), request.getContextPath());
-	            }else {
-	                System.out.println(request.getContextPath()+"/resources/"+r.toString().toLowerCase());
-	                request.getSession().setAttribute(r.toString().toLowerCase(), request.getContextPath()+"/resources/"+r.toString().toLowerCase());
-	            }*/
 			}
 		System.out.println(" JS 값==========>"+request.getSession().getAttribute("js")); //org.apache.catalina.session.StandardSessionFacade@7da3d2cd
-		// HttpSession session = request.getSession(); //가지고와서 객체를 만드는 형태 ,associated된
-		// 관계
-		// request는 자신의 일부만 session에게 넘겨주므로 죽지않고 남아있음
-		// request가 자료를 넘겨줘야만 session은 객체가 됨, 그전엔 객체가 아님
-		// 더이상 context를 설정할 필요없음
-		//request.getSession().setAttribute(Term.CONTEXT.toString(), request.getContextPath());
-		request.getRequestDispatcher(Term.WEBPATH.toString() + Term.MAIN.toString()).forward(request, response);
+		System.out.println(" getServletPath 값==========>"+ request.getServletPath()); //org.apache.catalina.session.StandardSessionFacade@7da3d2cd
+		System.out.println(" getServletContext 값==========>"+request.getServletContext()); //org.apache.catalina.session.StandardSessionFacade@7da3d2cd
+		request.getRequestDispatcher(Term.WEBPATH.toString() 
+				+request.getServletPath().split("/")[1].split("\\.")[0]
+				+ Term.MAIN.toString()).forward(request, response);
 	}
 }

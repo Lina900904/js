@@ -34,7 +34,7 @@ public class MemberDAOImpl implements MemberDAO {
 					.getConnection()
 					.createStatement()
 					.executeUpdate(
-							String.format(MemberQuery.INSERT_MEMBER.toString(),						           
+							String.format(MemberQuery.ADD.toString(),						           
 						             member.getId(),
 						             member.getPassword(), 
 						             member.getSsn(),
@@ -63,16 +63,16 @@ public class MemberDAOImpl implements MemberDAO {
 					.getConnection()
 					.createStatement()
 					.executeQuery(
-							String.format(MemberQuery.SELECT_ID.toString(),
+							String.format(MemberQuery.RETRIEVE.toString(),
 						              id));
 			while(rs.next()) {
 			m= new MemberBean();
-           m.setId(rs.getString("MEM_ID"));
+           m.setId(rs.getString("ID"));
            m.setName(rs.getString("NAME"));
            m.setRoll(rs.getString("ROLL"));
            m.setPassword(rs.getString("PASSWORD"));
            m.setSsn(rs.getString("SSN"));
-           m.setTeamId(rs.getString("TEAM_ID"));
+           m.setTeamId(rs.getString("TEAMID"));
            m.setAge(rs.getString("AGE"));
            m.setGender(rs.getString("GENDER"));
            System.out.println(m);
@@ -97,7 +97,7 @@ public class MemberDAOImpl implements MemberDAO {
 					.getConnection()
 					.createStatement()
 					.executeQuery(
-							MemberQuery.COUNT_MEMBER.toString());
+							MemberQuery.COUNT.toString());
 
 			while(rs.next()) {
 				count = rs.getInt("count");
@@ -121,7 +121,7 @@ public class MemberDAOImpl implements MemberDAO {
 					Vendor.ORACLE, DBConstant.USERNAME, DBConstant.PASSWORD)
 			.getConnection()
 			.createStatement()
-			.executeUpdate(String.format(MemberQuery.UPDATE_MEMBER.toString()
+			.executeUpdate(String.format(MemberQuery.UPDATE.toString()
 					
 				/*	member.getPassword(),
 					member.getRoll(),
@@ -144,7 +144,7 @@ public class MemberDAOImpl implements MemberDAO {
 					Vendor.ORACLE, DBConstant.USERNAME, DBConstant.PASSWORD)
 			.getConnection()
 			.createStatement()
-			.executeUpdate(String.format(MemberQuery.DELETE_MEMBER.toString(),        
+			.executeUpdate(String.format(MemberQuery.DELETE.toString(),        
 		              member.getId(),member.getPassword()));
 				
 	
@@ -175,9 +175,9 @@ public class MemberDAOImpl implements MemberDAO {
 
 			while(rs.next()) {
 				m = new MemberBean();
-                m.setId(rs.getString("MEM_ID"));
+                m.setId(rs.getString("ID"));
                 m.setName(rs.getString("NAME"));
-                m.setTeamId(rs.getString("TEAM_ID"));                  
+                m.setTeamId(rs.getString("TEAMID"));                  
                 m.setRoll(rs.getString("ROLL"));
                 m.setPassword(rs.getString("PASSWORD"));
                 m.setSsn(rs.getString("SSN"));
@@ -196,26 +196,29 @@ public class MemberDAOImpl implements MemberDAO {
 
 	@Override
 	public List<MemberBean> selectSome(Map<?, ?> param) {
-/*			QueryTemplate p = new PstmtQuery2();
-			List<MemberBean> selectList = new ArrayList<>();
+		
+
+			QueryTemplate q = new PstmtQuery();
+			List<MemberBean> list = new ArrayList<>();
 			HashMap<String, Object> map  = new HashMap<>();
 			String beginRow = (String) param.get("beginRow");
 			String endRow = (String) param.get("endRow");
-			map.put("sql", String.format(MemberQuery.GET_LIST.toString(),        
-					beginRow, endRow));
-			p.play(map);
+			String sql= MemberQuery.SEARCH.toString();     
+			map.put("sql", sql);
+			q.play(map);
 
 			
-			for(Object s : p.getList()) {
-				selectList.add((MemberBean) s);
+			for(Object s : q.getList()) {
+				list.add((MemberBean) s);
 			}
 			
-		return selectList;
+		return list;
 		
-	}*/
+	}
+
 		
 		
-		MemberBean m = new MemberBean();
+		/*MemberBean m = new MemberBean();
 		List<MemberBean> selectList = new ArrayList<>();
 		String beginRow = (String) param.get("beginRow");
 		String endRow = (String) param.get("endRow");
@@ -226,14 +229,14 @@ public class MemberDAOImpl implements MemberDAO {
 					Vendor.ORACLE, DBConstant.USERNAME, DBConstant.PASSWORD)
 			.getConnection()
 			.createStatement()
-			.executeQuery(String.format(MemberQuery.GET_LIST.toString(),        
+			.executeQuery(String.format(MemberQuery.SEARCH.toString(),        
 					beginRow, endRow));
 
 			while(rs.next()) {
 				m = new MemberBean();
-                m.setId(rs.getString("MEM_ID"));
+                m.setId(rs.getString("ID"));
                 m.setName(rs.getString("NAME"));
-                m.setTeamId(rs.getString("TEAM_ID"));                  
+                m.setTeamId(rs.getString("TEAMID"));                  
                 m.setRoll(rs.getString("ROLL"));
                 m.setPassword(rs.getString("PASSWORD"));
                 m.setSsn(rs.getString("SSN"));
@@ -248,7 +251,7 @@ public class MemberDAOImpl implements MemberDAO {
 		}
 
 		return selectList;
-	}
+	}*/
 
 
 

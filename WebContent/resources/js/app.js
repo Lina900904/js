@@ -40,29 +40,38 @@ var service= (()=>{
 			
 	};
 	})();
-
+var common = (()=>{
+	return{
+		main : x => {
+			document.getElementById('moveToAdminMain')
+			.addEventListener('click',function(){ 
+				var isAdmin= confirm('관리자 입니까?');
+				if(isAdmin){
+					var password = prompt('관리자 비번을 입력하세요');
+					if(password == ''){
+							router.move({
+								context : x,
+								domain : 'admin',
+								action : 'search',
+								page : 'main'});
+					}else{
+						alert('비번을 잘못 입력했습니다');
+						
+					}
+				}else{
+					alert('관리자만 접근이 허용됩니다.');
+				}
+				
+			});{
+		
+		}
+	}
+	};
+	})();
 
 var admin = (()=>{
 	return{
-	check : x=>{
-	var isAdmin= confirm('관리자 입니까?');
-		if(isAdmin){
-			var password = prompt('관리자 비번을 입력하세요');
-			if(password == ''){
-					router.move({
-						context : x,
-						domain : 'admin',
-						action : 'list',
-						page : 'main'});
-			}else{
-				alert('비번을 잘못 입력했습니다');
-				
-			}
-		}else{
-			alert('관리자만 접근이 허용됩니다.');
-		}
-		
-	},
+
 	main:x=>{
 
 		service.addClass(document.getElementById('seachBox'),'width80pt center');
@@ -100,25 +109,7 @@ var admin = (()=>{
 					; 
 		});  
 	
-/*		document.getElementById('prevBlock').addEventListener('click', function(){
-			alert('next 클릭');
-			i.style.color = 'blue';
-			i.style.cursor = 'pointer';
-			i.addEventListener('click',function(){
-			location.href = x+'/admin.do?action=list&page=main&pageNumber='
-			+this.getAttribute('id');
-			}); 
-		});
-		document.getElementById('nextBlock').addEventListener('click', function(){
-			alert('next 클릭');
-			i.style.color = 'blue';
-			i.style.cursor = 'pointer';
-			i.addEventListener('click',function(){
-			location.href = x+'/admin.do?action=list&page=main&pageNumber='
-			+this.getAttribute('id');
-			}); 
-			}); */ 
-		
+
 		for(var i of document.querySelectorAll('.pageNumber') ){ //Array타입 .은클래스
 			i.style.color = 'blue';
 			i.style.cursor = 'pointer';

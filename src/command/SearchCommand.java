@@ -27,6 +27,7 @@ public class SearchCommand extends Command{
 	
 	@Override
 	public void execute() {
+		System.out.println("1.SearchCommand : " );
 		Map<String, Object> param= new HashMap<>();
 		String pageNumber = request.getParameter("pageNumber");
 		PageProxy pxy = new PageProxy();
@@ -36,7 +37,7 @@ public class SearchCommand extends Command{
 		param.put("beginRow", String.valueOf(page.getBeginRow()));
 		param.put("endRow",  String.valueOf(page.getEndRow()));
 		request.setAttribute("page", page);
-		request.setAttribute("selectList", MemberServiceImpl.getInstance().search(param));
+		request.setAttribute("list", MemberServiceImpl.getInstance().search(param));
 		
 
 		

@@ -25,12 +25,9 @@ public class Commander {
 			// 이객체는 case문이 실행되고 나면 사라짐 그래서 sentry.cmd를 만들어서 그곳에 붙어 있게함
 			//여러 형태로 sentry.cmd를 만들수있다, 아래처럼(다형성)
 			break;
-		case JOIN : 
+		case ADD : 
 			System.out.println("조인진입");
-			cmd =new CreateCommand(request);
-			break;
-		case LIST :
-			cmd = new SearchCommand(request);
+			cmd =new AddCommand(request);
 			break;
 		case LOGIN : 
 			System.out.println("로그인 진입");
@@ -45,12 +42,12 @@ public class Commander {
 			//List<MemberBean> mems= ((SearchCommand) Sentry.cmd).getMember();
 			cmd = new SearchCommand(request);
 			break;
-		case UPDATE :
+		case MODIFY :
 			System.out.println("업데이트 진입");
-			cmd = new UpdateCommand(request);
+			cmd = new ModifyCommand(request);
 			break;
-		case DELETE :
-			cmd = new DeleteCommand(request);
+		case REMOVE :
+			cmd = new RemoveCommand(request);
 			break;
 
 		default:

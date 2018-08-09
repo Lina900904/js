@@ -19,15 +19,14 @@ public class MemberServiceImpl implements MemeberService {
 	}
 
 	@Override
-	public void create(MemberBean member) {
+	public void add(MemberBean member) {
 		// TODO Auto-generated method stub
 		
 	}
 
 	@Override
 	public List<MemberBean> search(Map<?, ?> param) {
-		// TODO Auto-generated method stub
-		return null;
+		return MemberDAOImpl.getInstance().selectSome(param);
 	}
 
 	@Override

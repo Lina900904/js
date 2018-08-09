@@ -8,7 +8,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import command.Carrier;
-import command.Sentry;
+import command.Receiver;
 import enums.Action;
 
 /**
@@ -22,24 +22,22 @@ public class AdminController extends HttpServlet {
 		
 		String action =request.getParameter("action");
 		String page = request.getParameter("page");
-		Sentry.init(request, response); // sentry.cmd를 만들었다
+		Receiver.init(request, response); // sentry.cmd를 만들었다
 		
 		
 				
-			switch(Action.valueOf(Sentry.cmd.getAction().toUpperCase())) {
-			case LIST :
-				System.out.println("%%%%%%%%%%%list 진입");
-				//Carrier.redirect(request,response,"/member.do?action=move&page=memberList");				
-				Carrier.forword(request,response);
-				break;
+			switch(Action.valueOf(Receiver.cmd.getAction().toUpperCase())) {
+			
 			case RETRIEVE :
 				Carrier.forword(request, response);
 				break;
 				
 			case SEARCH :
-			Carrier.forword(request,response);			
+				Carrier.forword(request,response);			
 			break;
-			
+			case MOVE :
+				Carrier.forword(request, response);
+			break;
 		
 			default:
 				break;

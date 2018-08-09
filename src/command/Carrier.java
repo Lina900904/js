@@ -9,9 +9,9 @@ public class Carrier { //해당 페이지로 이동하는 역할만
 	public static void forword(HttpServletRequest request,
 			HttpServletResponse response) {
 	try {
-		System.out.println("뷰:"+Sentry.cmd.getView());
+		System.out.println("뷰:"+Receiver.cmd.getView());
 		request
-		.getRequestDispatcher(Sentry.cmd.getView())
+		.getRequestDispatcher(Receiver.cmd.getView())
 		.forward(request, response);
 	} catch (Exception e) {
 		// TODO Auto-generated catch block

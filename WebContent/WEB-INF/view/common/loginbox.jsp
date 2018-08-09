@@ -30,13 +30,8 @@ document.getElementById('moveLoginForm')
 		page:'joinForm'});
 	
 	alert('클릭 이벤트 체크!');
-	// new Common().move('${context}','member','move','joinForm');	
 		});
  
- 
- 
- //(function(){})();  //Goofy
- //(function(){}());  //Groovy
  
  
  

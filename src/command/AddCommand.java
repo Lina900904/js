@@ -10,9 +10,9 @@ import domain.MemberBean;
 import enums.Domain;
 import service.MemberServiceImpl;
 
-public class CreateCommand extends Command{
+public class AddCommand extends Command{
 	MemberBean joinm;
-	public CreateCommand(HttpServletRequest request) {
+	public AddCommand(HttpServletRequest request) {
 		setRequest(request);
 		setDomain(request.getServletPath().substring(1,request.getServletPath().indexOf(".")));
 		setAction(request.getParameter("action"));
@@ -34,9 +34,9 @@ public class CreateCommand extends Command{
 			joinm.setGender(request.getParameter("gender"));
 			joinm.setTeamId(request.getParameter("teamid"));
 			joinm.setRoll(request.getParameter("roll"));
-			joinm.setSubject(ParamMap.gatValuse(request,"subject"));
+			//joinm.setSubject(ParamMap.gatValuse(request,"subject"));
 			
-			MemberServiceImpl.getInstance().create(joinm);	
+			MemberServiceImpl.getInstance().add(joinm);	
 			System.out.println("회원가입 성공");
 		
 			break;

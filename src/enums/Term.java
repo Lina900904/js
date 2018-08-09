@@ -1,7 +1,7 @@
 package enums;
 
 public enum Term {
-	WEBPATH, MAIN, CONTEXT;
+	WEBPATH, MAIN, CONTEXT, COMMON;
 	
 	@Override
 	public String toString() {
@@ -16,6 +16,8 @@ public enum Term {
 		case MAIN : 
 			res = "/main.jsp";
 			break;
+		
+			
 		
 		
 

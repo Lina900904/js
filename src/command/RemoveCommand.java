@@ -8,13 +8,13 @@ import domain.MemberBean;
 import enums.Domain;
 import service.MemberServiceImpl;
 
-public class DeleteCommand extends Command{
+public class RemoveCommand extends Command{
 	List<MemberBean> list;
 	public List<MemberBean> getList() {
 		return list;
 	}
 
-	public DeleteCommand(HttpServletRequest request) {
+	public RemoveCommand(HttpServletRequest request) {
 		setRequest(request);
 		setDomain(request.getServletPath().substring(1, request.getServletPath().indexOf(".")));
 		setAction(request.getParameter("action"));
@@ -25,7 +25,7 @@ public class DeleteCommand extends Command{
 	
 	@Override
 	public void execute() {
-		switch (Domain.valueOf(Sentry.cmd.domain.toUpperCase())) {
+		switch (Domain.valueOf(Receiver.cmd.domain.toUpperCase())) {
 		case MEMBER:
 			MemberBean dm = new MemberBean();
 			// dm.setId(request.getParameter("id"));

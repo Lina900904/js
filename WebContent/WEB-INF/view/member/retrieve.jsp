@@ -1,9 +1,7 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<c:set var="context" value="<%=application.getContextPath()%>" />
-
-
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@taglib prefix="c" uri= "http://java.sun.com/jsp/jstl/core"%>
+<c:set var="context" value="<%= application.getContextPath()%>"></c:set>
+ 
 
 <!doctype html>
 <html lang="en">
@@ -100,37 +98,3 @@
 </body>
 </html>
 
-
-
-
-
-
-
-<%--      <h1>아이디 : ${user.id}</h1>
-    <h1>비밀번호 : ******</h1>
-    <h1>이름 : ${user.name} </h1>
-    <h1>나이 : ${user.age} </h1>
-    <h1>성별 : ${user.gender}</h1>
-    <h1>주민번호 : ${user.ssn} </h1>
-    <h1>직책 : ${user.roll} </h1>
-    <h1>팀 아이디: ${user.teamId} </h1>
-    <h1>수강과목 : ${user.subject} </h1> --%>
-
-
-
-
-<%-- <!doctype html>
-<html lang="en">
-<head>
-	<meta charset="UTF-8" />
-	<title>MYPAGE</title>
-	
-</head>
-<body>
-
-	<%
-	MemberBean user = (MemberBean)request.getAttribute("user");
-	%>
-	<h1> <%=user.getName() %>마이페이지 진입</h1>
-</body>
-</html> --%>

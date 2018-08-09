@@ -5,7 +5,7 @@
  --%>
 <!doctype html>
 <html lang="en">
-<title>ADMIN</title>
+<title>MEMBER MAIN</title>
 <jsp:include page="../common/head.jsp" />
 <body>
 	<div id="wrapper">
@@ -17,10 +17,9 @@
 		</div>
 	<div id="footer"></div>
 
-
 <script>
-admin.main('${context}')
-
+common.main('${context}')
 </script>
+
 </body>
 </html>

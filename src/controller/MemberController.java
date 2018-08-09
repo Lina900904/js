@@ -14,7 +14,7 @@ import javax.servlet.http.HttpSession;
 
 import command.Carrier;
 import command.SearchCommand;
-import command.Sentry;
+import command.Receiver;
 import domain.MemberBean;
 import service.MemberServiceImpl;
 
@@ -26,34 +26,31 @@ public class MemberController extends HttpServlet {
 		
 		String action =request.getParameter("action");
 		String page = request.getParameter("page");
-		Sentry.init(request, response); // sentry.cmd를 만들었다
+		Receiver.init(request, response); // sentry.cmd를 만들었다
 		
 		
 				
-			switch(Action.valueOf(Sentry.cmd.getAction().toUpperCase())) {
+			switch(Action.valueOf(Receiver.cmd.getAction().toUpperCase())) {
 			case MOVE :
 					System.out.println("무브안으로 진입");
 					Carrier.forword(request, response);
 				break;
-			case JOIN: 
+			case ADD: 
 			
 				Carrier.redirect(request,response,"/member.do?action=move&page=user_login_form");
 				break;
 			case COUNT: 
 				Carrier.forword(request, response);
 				break;
-			case LIST : 
-				System.out.println("리스트~~~");
-				 Carrier.redirect(request,response,"/member.do?action=move&page=memberList");				
-				break;
+	
 			
 			case LOGIN :
 				System.out.println("!!!!!!!!!#####");
 				
 				if(request.getAttribute("match").equals("TRUE")) {
 					//request.getSession().setAttribute("user", request.getAttribute("user"));
-					Sentry.cmd.setPage("mypage");
-					Sentry.cmd.execute();	
+					Receiver.cmd.setPage("mypage");
+					Receiver.cmd.execute();	
 					Carrier.forword(request, response);
 				}else {
 					Carrier.redirect(request, response, "/member.do?action=move&page=user_login_form");
@@ -66,10 +63,10 @@ public class MemberController extends HttpServlet {
 
 				Carrier.redirect(request, response, "/member.do?action=move&page=searchTeamResult");
 				break;
-			case UPDATE : 
+			case MODIFY : 
 				Carrier.redirect(request, response, "");
 				break;
-			case DELETE : 
+			case REMOVE : 
 				Carrier.redirect(request, response, "");
 				break;
 			default:
