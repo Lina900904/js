@@ -198,7 +198,7 @@ public class MemberDAOImpl implements MemberDAO {
 	public List<MemberBean> selectSome(Map<?, ?> param) {
 		
 
-			QueryTemplate q = new PstmtQuery();
+			QueryTemplate q = new PstmtQuery2();
 			List<MemberBean> list = new ArrayList<>();
 			HashMap<String, Object> map  = new HashMap<>();
 			String beginRow = (String) param.get("beginRow");
