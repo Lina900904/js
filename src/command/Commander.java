@@ -49,6 +49,10 @@ public class Commander {
 		case REMOVE :
 			cmd = new RemoveCommand(request);
 			break;
+		case COUNT :
+			System.out.println("카운트 진입");
+			cmd = new CountCommand(request);
+			break;
 
 		default:
 			break;

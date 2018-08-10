@@ -1,4 +1,4 @@
-package template;
+package templates;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -8,43 +8,18 @@ import enums.Domain;
 import factory.DatabaseFactory;
 import lombok.Data;
 
-public class PstmtQuery extends QueryTemplate {
+public class RetrieveQuery extends QueryTemplate {
 
 	@Override
 	void initialize() {
-	
-			map.put("sql", String.format(
-					" SELECT "
-					+ColumnFinder.find(Domain.MEMBER)
-					+ " FROM %s "
-					+ " WHERE %s "
-					+ " LIKE ? ",
-					map.get("table"),
-					map.get("column")));
+
 			
 	
 	
 		
 	}
 
-	@Override
-	void startPlay() {
-		System.out.println("====================");
-		System.out.println(map.get("sql"));
-		
-			try {
-				pstmt = DatabaseFactory
-						.createDatabase2(map)
-						.getConnection()
-						.prepareStatement((String)map.get("sql"));
-				pstmt.setString(1, "%"+map.get("value").toString()+"%");
-						
-						
-			} catch (SQLException e) {
-				e.printStackTrace();
-			}
-		}
-		
+	
 		
 	
 
@@ -70,6 +45,16 @@ public class PstmtQuery extends QueryTemplate {
 		} catch (Exception e) {
 			// TODO: handle exception
 		}
+	}
+
+
+
+
+
+	@Override
+	void startPlay() {
+		// TODO Auto-generated method stub
+		
 	}
 
 	

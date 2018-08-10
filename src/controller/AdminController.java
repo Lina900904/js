@@ -23,15 +23,10 @@ public class AdminController extends HttpServlet {
 		String action =request.getParameter("action");
 		String page = request.getParameter("page");
 		Receiver.init(request, response); // sentry.cmd를 만들었다
-		
-		
-				
 			switch(Action.valueOf(Receiver.cmd.getAction().toUpperCase())) {
-			
 			case RETRIEVE :
 				Carrier.forword(request, response);
 				break;
-				
 			case SEARCH :
 				Carrier.forword(request,response);			
 			break;
@@ -41,9 +36,7 @@ public class AdminController extends HttpServlet {
 		
 			default:
 				break;
-
 	}
-
 			}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)

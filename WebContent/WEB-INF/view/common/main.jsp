@@ -16,6 +16,7 @@
 	</script>
 <body>
 <div id = "wrapper">
+
 		<div id = "header">
 	<jsp:include page ="titlebox.jsp"/>
 	<jsp:include page ="loginbox.jsp"/>			

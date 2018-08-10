@@ -1,4 +1,5 @@
-package template;
+package templates;
+
 
 
 import java.lang.reflect.Field;

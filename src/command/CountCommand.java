@@ -15,6 +15,7 @@ public class CountCommand extends Command{
 	}
 	 @Override
 	public void execute() {
+		 System.out.println("카운트 진입했어~~~");
 		
 		 request.setAttribute("count",MemberServiceImpl.getInstance().count());
 		

@@ -62,9 +62,29 @@ var common = (()=>{
 					alert('관리자만 접근이 허용됩니다.');
 				}
 				
-			});{
+			});
+			document.getElementById('moveLoginForm')
+			.addEventListener('click',function(){  //콜백함수(연이어서 호출되는 함수)
+				router.move({context : '${context}',
+					domain : 'member',
+					action : 'move',
+					page : 'login.jsp'}); //배열 json
+				alert('클릭 이벤트 체크!');
+				//new Common().move('${context}','member','move','user_login_form');	
+				
+					});
+					
+			 document.getElementById('moveJoinForm')
+			.addEventListener('click',function(){  //콜백함수(연이어서 호출되는 함수)
+				router.move({context :'${context}',
+					domain:'member',
+					action:'move',
+					page:'add.jsp'});
+				
+				alert('클릭 이벤트 체크!');
+					});
+			 
 		
-		}
 	}
 	};
 	})();
@@ -87,7 +107,7 @@ var admin = (()=>{
 			i.style.color = 'blue';
 			i.style.cursor = 'pointer';
 			i.addEventListener('click',function(){
-			location.href = x+'/admin.do?action=retrieve&page=memberDetail&id='// get방식
+			location.href = x+'/member.do?action=search&page=search&id='// get방식
 			+this.getAttribute('id');//this는 for문에서만 사용~~
 				
 			});
@@ -110,11 +130,11 @@ var admin = (()=>{
 		});  
 	
 
-		for(var i of document.querySelectorAll('.pageNumber') ){ //Array타입 .은클래스
+		for(var i of document.querySelectorAll('.pageNumber') ){ 
 			i.style.color = 'blue';
 			i.style.cursor = 'pointer';
 			i.addEventListener('click',function(){
-			location.href = x+'/admin.do?action=list&page=main&pageNumber='
+			location.href = x+'/admin.do?action=search&page=main&pageNumber='
 			+this.getAttribute('id');
 				
 			});
@@ -176,12 +196,12 @@ var member=(()=> { //클로져를 사용한 객체 (보안을 위해)
 			join:x=>{
 				member.setAge(x); //값은 없고 틀만 있음
 				member.setGender(x);
-
-				
 			}
+				};
+				
 	
 				
 				
-				};
+				
 		})();
 		

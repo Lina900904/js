@@ -20,7 +20,7 @@ String ctx = application.getContextPath();  //서블릿의 설정값을 가져�
 	<div id="user-Login-Layout">
 		<h1>로그인</h1>
 
-		<form id="user_login_form" name = "user_login_form">
+		<form id="login" name = "login">
 			ID : <br>
 			<input type="text" name="userid" /><br /> 
 			PassWord: <br />
@@ -40,10 +40,7 @@ String ctx = application.getContextPath();  //서블릿의 설정값을 가져�
 			var form = document.getElementById('user_login_form');
 			var x = service.nullChecker(
 					[form.userid.value,form.password.value]);
-					/* var userid = form.userid.value;		
-					var password = form.password.value; */
-			/* 		member.setId(form.userid.value);
-					member.setPassword(form.password.value); */
+				
 					
 					if(x.checker){		
 					var node = document.createElement('input');

@@ -1,6 +1,6 @@
 package enums;
 
-import template.ColumnFinder;
+import templates.ColumnFinder;
 
 public enum MemberQuery {
 	LOGIN, ADD,RETRIEVE,COUNT,UPDATE,DELETE, SEARCH, LIST, ;	
@@ -16,7 +16,7 @@ public enum MemberQuery {
 		case ADD :
 			query= "     INSERT INTO MEMBER "
 		              + "    ( * )  "
-		              + "    VALUES ( ? , ? , ? , ? , ? , ?, ? , ? ) ";
+		              + "    VALUES ( ? , ? , ? , ? , ? , ?, ? , ?, ?) ";
 			break;
 		case 	RETRIEVE :
 			query = "SELECT" + ColumnFinder.find(Domain.MEMBER)
@@ -24,7 +24,7 @@ public enum MemberQuery {
 					+ "  WHERE ID LIKE ? " ;
 			break;
 		case 	COUNT :
-			query = " SELECT COUNT(*) AS count "
+			query = " SELECT COUNT(*) AS COUNT "
 					+ " FROM MEMBER ";
 			
 			break;
@@ -52,10 +52,10 @@ public enum MemberQuery {
 		
 	case 		LIST :
 		query = " select t.* "
-				+ " from(select rownum seq, m.* "
+				+ " from ( select rownum seq, m.* "
 				+ " from member m "
-				+ " order by seq desc) t "
-				+ 	" where t.seq between ?' and ? ";
+				+ " order by seq desc ) t "
+				+ 	" where t.seq between ? and ? ";
 		
 		break;
 

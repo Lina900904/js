@@ -13,7 +13,7 @@ import domain.MemberBean;
 import domain.MemberBean;
 
 public interface MemberDAO {
-	public void intsert(MemberBean member);
+	public void insert(MemberBean member);
 	public List<MemberBean> selectSome(Map<?, ?>param);
 	public MemberBean selectOne(String id);
 	public int count();

@@ -39,9 +39,7 @@ public class MemberController extends HttpServlet {
 			
 				Carrier.redirect(request,response,"/member.do?action=move&page=user_login_form");
 				break;
-			case COUNT: 
-				Carrier.forword(request, response);
-				break;
+		
 	
 			
 			case LOGIN :
@@ -61,7 +59,7 @@ public class MemberController extends HttpServlet {
 				break;
 			case SEARCH : 
 
-				Carrier.redirect(request, response, "/member.do?action=move&page=searchTeamResult");
+				Carrier.forword(request, response);
 				break;
 			case MODIFY : 
 				Carrier.redirect(request, response, "");
@@ -69,6 +67,7 @@ public class MemberController extends HttpServlet {
 			case REMOVE : 
 				Carrier.redirect(request, response, "");
 				break;
+		
 			default:
 				break;
 

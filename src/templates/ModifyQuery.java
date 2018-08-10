@@ -1,4 +1,4 @@
-package template;
+package templates;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -8,32 +8,19 @@ import enums.Domain;
 import factory.DatabaseFactory;
 import lombok.Data;
 
-public class PstmtQuery2 extends QueryTemplate {
+public class ModifyQuery extends QueryTemplate {
 
 	@Override
 	void initialize() {
 
-			map.get("spl");
+	
+	
+		
 	}
 
-	@Override
-	void startPlay() {
-		System.out.println("====================");
-		System.out.println(map.get("sql"));
 
-			try {
-				pstmt = DatabaseFactory
-						.createDatabase2(map)
-						.getConnection()
-						.prepareStatement((String)map.get("sql"));
-				
-						
-						
-			} catch (SQLException e) {
-				e.printStackTrace();
-			}
-
-	}
+		
+		
 	
 
 	@Override
@@ -58,6 +45,17 @@ public class PstmtQuery2 extends QueryTemplate {
 		} catch (Exception e) {
 			// TODO: handle exception
 		}
+	}
+
+
+
+
+
+
+	@Override
+	void startPlay() {
+		// TODO Auto-generated method stub
+		
 	}
 
 	

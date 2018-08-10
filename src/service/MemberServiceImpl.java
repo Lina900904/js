@@ -31,8 +31,8 @@ public class MemberServiceImpl implements MemeberService {
 
 	@Override
 	public MemberBean retrieve(String id) {
-		// TODO Auto-generated method stub
-		return null;
+		
+		return MemberDAOImpl.getInstance().selectOne(id);
 	}
 
 	@Override
@@ -49,14 +49,13 @@ public class MemberServiceImpl implements MemeberService {
 
 	@Override
 	public int count() {
-		// TODO Auto-generated method stub
-		return 0;
+		return MemberDAOImpl.getInstance().count();
 	}
 
 	@Override
 	public boolean login(MemberBean member) {
-		// TODO Auto-generated method stub
-		return false;
+		
+		return MemberDAOImpl.getInstance().login(member)!=null;
 	}
 
 	

@@ -25,7 +25,7 @@
 			<th>역할</th>
 			<th>팀 명</th>
 		</tr>
-		<c:forEach items="${selectList}" var="member"> 
+		<c:forEach items="${list}" var="member"> 
 			<tr>
 				<td>${member.id}</td>
 				<td><a class = "username" id="${member.id}" >${member.name}</a></td> 

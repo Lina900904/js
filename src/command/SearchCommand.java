@@ -27,44 +27,36 @@ public class SearchCommand extends Command{
 	
 	@Override
 	public void execute() {
-		System.out.println("1.SearchCommand : " );
-		Map<String, Object> param= new HashMap<>();
+		Map<String,String> paramMap = new HashMap<>();
 		String pageNumber = request.getParameter("pageNumber");
 		PageProxy pxy = new PageProxy();
-		int pn = (pageNumber==null)?1:Integer.parseInt(pageNumber);
-		pxy.carryOut(pn);
-		Pagination page = pxy.getPagination();
-		param.put("beginRow", String.valueOf(page.getBeginRow()));
-		param.put("endRow",  String.valueOf(page.getEndRow()));
-		request.setAttribute("page", page);
-		request.setAttribute("list", MemberServiceImpl.getInstance().search(param));
-		
-
-		
-		
-		
-		//팩토리 패턴
-		/* String beginRow = "1";
-			String endRow = "5";
-			param.put("beginRow", beginRow);
-			param.put("endRow", endRow);
-			List<MemberBean> mems = MemberServiceImpl.getInstance().getList(param);
-			param.put("beginRow", String.valueOf(beginRow));
-			param.put("endRow",  String.valueOf(endRow));
-			
-			request.setAttribute("count", MemberServiceImpl.getInstance().memberCount());
-			int count = MemberServiceImpl.getInstance().memberCount();
-			request.setAttribute("list", MemberServiceImpl.getInstance().memberList());
-			request.setAttribute("seletList", MemberServiceImpl.getInstance().getList(param));		
-			request.setAttribute("beginPage", "1" );
-			request.setAttribute("endPage", count%5==0?count/5 :count/5+1 );
-			request.setAttribute("endPage", (count/Integer.parseInt(endRow))<6 
-					? (count%Integer.parseInt(endRow)==0?count/Integer.parseInt(endRow) 
-							:count/Integer.parseInt(endRow)+1) : Integer.parseInt(endRow));*/
-
+		pxy.carryOut((pageNumber==null)
+				? 1:
+			Integer.parseInt(pageNumber));
 	
-
-	super.execute();
+		Pagination page = pxy.getPagination();
+		String[] arr1 = {"domain","beginRow","endRow"};
+		String[] arr2 = {
+				request.getServletPath()
+					.split("/")[1]
+					.split("\\.")[0],
+				String.valueOf(page.getBeginRow()),
+				String.valueOf(page.getEndRow())
+		};
+		for(int i = 0; i < arr1.length; i++){
+			paramMap.put(arr1[i],arr2[i]);
+		}
+		
+		request.setAttribute("page", page);
+		request.setAttribute("list",
+				MemberServiceImpl.getInstance()
+					.search(paramMap));
+		request.setAttribute("count", MemberServiceImpl.getInstance().count());
+		System.out.println("count 값~~"+request.getAttribute("count"));
+		super.execute();
+		
+		
+		
 	}
 
 
