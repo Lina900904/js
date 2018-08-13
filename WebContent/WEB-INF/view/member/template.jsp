@@ -3,18 +3,9 @@
 <%-- <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <c:set var="context" value="<%=application.getContextPath()%>" />
  --%>
-<!doctype html>
-<html lang="en">
-<jsp:include page="../common/head.jsp" />
-<script>
-
-</script>
-	<script> /* 전역메소드, body안에 두어야함 */
 
 
-	</script>
-<body>
-<div id = "wrapper">
+<div id ="content-box"> 
 		<div id = "header">
 	<jsp:include page ="../common/titlebox.jsp"/>
 	<jsp:include page ="../common/loginbox.jsp"/>			
@@ -46,6 +37,4 @@
 
 
 
-</body>
-</html>
 

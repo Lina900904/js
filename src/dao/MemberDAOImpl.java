@@ -50,8 +50,9 @@ public class MemberDAOImpl implements MemberDAO {
 
 	@Override
 	public MemberBean selectOne(String id) {
-		// TODO Auto-generated method stub
 		return null;
+	
+	
 	}
 
 	@Override
@@ -63,22 +64,25 @@ public class MemberDAOImpl implements MemberDAO {
 
 	@Override
 	public void update(Map<?, ?> param) {
-		// TODO Auto-generated method stub
+		q = new ModifyQuery();
+		q.play();
 		
 	}
 
 	@Override
 	public void delete(MemberBean member) {
-		// TODO Auto-generated method stub
+		q = new RemoveQuery();
+		q.play();
 		
 	}
 
 	@Override
 	public MemberBean login(MemberBean member) {
 		q = new LoginQuery();
-		q.play(member);
+		q.play();
+		return member;
 		
-		return  ;
+		
 	}
 
 		

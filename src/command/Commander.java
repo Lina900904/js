@@ -47,11 +47,16 @@ public class Commander {
 			cmd = new ModifyCommand(request);
 			break;
 		case REMOVE :
+			System.out.println("삭제 진입");
 			cmd = new RemoveCommand(request);
 			break;
 		case COUNT :
 			System.out.println("카운트 진입");
 			cmd = new CountCommand(request);
+			break;
+		case FILEUPLOAD :
+			System.out.println("카운트 진입");
+			cmd = new FileCommand(request);
 			break;
 
 		default:

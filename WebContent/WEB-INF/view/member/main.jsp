@@ -9,27 +9,35 @@
 <body>
 	<div id="wrapper">
 		<div id="header">
-			<h1>관리자용 페이지</h1>
+			<jsp:include page="../common/titlebox.jsp" />
+			<jsp:include page="../common/menubox.jsp" />
+			<jsp:include page="../common/loginbox.jsp" />
+		</div>
+		<div id="content-box">
+			<h1></h1>
 			<c:choose>
-				<c:when test="${pagename eq 'add'} ">
-					<jsp:include page="add.jsp" />
+				<c:when test="${pagename eq 'add'}">
+					<jsp:include page="add.jsp"/>
 				</c:when>
-				<c:when test="${pagename eq 'login'} ">
-					<jsp:include page="login.jsp" />
+				<c:when test="${pagename eq 'login'}">
+					<jsp:include page="login.jsp"/>
 				</c:when>
-				<c:when test="${pagename eq 'search'} ">
-					<jsp:include page="search.jsp" />
+				<c:when test="${pagename eq 'search'}">
+					<jsp:include page="search.jsp"/>
+				</c:when>
+				<c:when test="${pagename eq 'modify'}">
+					<jsp:include page="modify.jsp"/>
 				</c:when>
 				<c:otherwise>
-					<jsp:include page="retrieve.jsp" />
+					<jsp:include page="retrieve.jsp"/>
 				</c:otherwise>
 			</c:choose>
 
 
-			<jsp:include page="../common/loginbox.jsp" />
+
 		</div>
 		<!-- header end -->
-		<jsp:include page="../member/search.jsp" />
+
 	</div>
 	<div id="footer"></div>
 

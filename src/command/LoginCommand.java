@@ -19,11 +19,14 @@ public class LoginCommand extends Command {
 	}
 	@Override
 	public void execute() {
-
+	
+		System.out.println("로그인커맨드 진입~~~~~~!!!!");
 		super.execute(); //-> view
 		MemberBean lom= new MemberBean();
 		lom.setId(request.getParameter("userid"));
 		lom.setPassword(request.getParameter("password"));
+		
+		request.setAttribute("pagename", "login");
 		if(MemberServiceImpl.getInstance().login(lom)) {
 			System.out.println("Login Success!!!");
 			request.setAttribute("match", "TRUE");

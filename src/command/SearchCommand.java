@@ -20,7 +20,6 @@ public class SearchCommand extends Command{
 		setRequest(request);
 		setDomain(request.getServletPath().substring(1, request.getServletPath().indexOf(".")));
 		setAction(request.getParameter("action"));
-		setPage(request.getParameter("page"));
 		execute();
 	
 	}
@@ -46,7 +45,7 @@ public class SearchCommand extends Command{
 		for(int i = 0; i < arr1.length; i++){
 			paramMap.put(arr1[i],arr2[i]);
 		}
-		
+		request.setAttribute("pagename", "search");
 		request.setAttribute("page", page);
 		request.setAttribute("list",
 				MemberServiceImpl.getInstance()

@@ -26,6 +26,7 @@ public class ModifyCommand extends Command{
 			MemberBean member = (MemberBean) request.getSession().getAttribute("user");
 			System.out.println("==변경전==\n"+member);
 			Map<?, ?> param = new HashMap<>();
+			request.setAttribute("pagename", "modify");
 			
 			member.setPassword(request.getParameter("newpass"));
 			member.setTeamId(request.getParameter("teamid"));

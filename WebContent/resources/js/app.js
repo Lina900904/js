@@ -65,10 +65,10 @@ var common = (()=>{
 			});
 			document.getElementById('moveLoginForm')
 			.addEventListener('click',function(){  //콜백함수(연이어서 호출되는 함수)
-				router.move({context : '${context}',
+				router.move({context : x,
 					domain : 'member',
 					action : 'move',
-					page : 'login.jsp'}); //배열 json
+					page : 'login'}); //배열 json
 				alert('클릭 이벤트 체크!');
 				//new Common().move('${context}','member','move','user_login_form');	
 				
@@ -76,13 +76,33 @@ var common = (()=>{
 					
 			 document.getElementById('moveJoinForm')
 			.addEventListener('click',function(){  //콜백함수(연이어서 호출되는 함수)
-				router.move({context :'${context}',
+				router.move({context :x,
 					domain:'member',
 					action:'move',
-					page:'add.jsp'});
+					page:'add'});
 				
 				alert('클릭 이벤트 체크!');
 					});
+				
+
+				document.getElementById('loginFormBtn').addEventListener('click',
+						function() {	
+					var form = document.getElementById('user_login_form');
+					var x = service.nullChecker(
+							[form.userid.value,form.password.value]);
+						
+							
+							if(x.checker){		
+							var node = document.createElement('input');
+							node.innerHTML = '<input type="hidden" name="action" value="login" />';
+							form.appendChild(node);
+								form.action = "$/member.do";
+								form.method = "post";
+								form.submit();
+							}else{
+								alert(x.text);
+							}
+						});
 			 
 		
 	}
@@ -107,7 +127,7 @@ var admin = (()=>{
 			i.style.color = 'blue';
 			i.style.cursor = 'pointer';
 			i.addEventListener('click',function(){
-			location.href = x+'/member.do?action=search&page=search&id='// get방식
+			location.href = x+'/member.do?action=retrieve&id='// get방식
 			+this.getAttribute('id');//this는 for문에서만 사용~~
 				
 			});
@@ -139,6 +159,13 @@ var admin = (()=>{
 				
 			});
 		};
+		
+		
+
+	
+		
+		
+		
 
 	}
 };})();
@@ -196,9 +223,34 @@ var member=(()=> { //클로져를 사용한 객체 (보안을 위해)
 			join:x=>{
 				member.setAge(x); //값은 없고 틀만 있음
 				member.setGender(x);
+			},
+			main : x=>{
+			
+				document.getElementById('updateBtn').addEventListener(
+							'click', function() {
+								alert('수정버튼 클릭함');
+								router.move({context : x,
+									domain : 'member',
+									action : 'move',
+									page : 'modify'}); 
+							});
+			document.getElementById('deleteBtn').addEventListener(
+						'click', function() {
+							alert('수정확인버튼 클릭함');
+							router.move({context : x,
+								domain : 'member',
+								action : 'move',
+								page : 'remove'}); 
+						});	
+				
+				
+				
+				
+				
 			}
 				};
 				
+		
 	
 				
 				

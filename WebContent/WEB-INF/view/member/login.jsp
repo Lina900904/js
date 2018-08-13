@@ -2,22 +2,10 @@
 	pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <c:set var="context" value="<%=application.getContextPath()%>"></c:set>
-<%-- 
-<% 
-String ctx = application.getContextPath();  //서블릿의 설정값을 가져옴
-%> --%>
 
-<!doctype html>
-<html lang="en">
-<head>
-<meta charset="UTF-8" />
-<title>USERLOGIN</title>
-<jsp:include page="../common/head.jsp" /> <!-- 헤드에서 펑션을 만들었기 때문에 아래서 쓸수있음 -->
-</head>
 
-<body>
 
-	<div id="user-Login-Layout">
+<div id ="content-box">
 		<h1>로그인</h1>
 
 		<form id="login" name = "login">
@@ -33,27 +21,4 @@ String ctx = application.getContextPath();  //서블릿의 설정값을 가져�
 		</form>
 	</div>
 
-	<script>
-	
-		document.getElementById('loginFormBtn').addEventListener('click',
-				function() {	
-			var form = document.getElementById('user_login_form');
-			var x = service.nullChecker(
-					[form.userid.value,form.password.value]);
-				
-					
-					if(x.checker){		
-					var node = document.createElement('input');
-					node.innerHTML = '<input type="hidden" name="action" value="login" />';
-					form.appendChild(node);
-						form.action = "${context}/member.do";
-						form.method = "post";
-						form.submit();
-					}else{
-						alert(x.text);
-					}
-				});
-	</script>
 
-</body>
-</html>

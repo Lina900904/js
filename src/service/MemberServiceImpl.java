@@ -37,13 +37,13 @@ public class MemberServiceImpl implements MemeberService {
 
 	@Override
 	public void modify(Map<?, ?>param) {
-		// TODO Auto-generated method stub
+		MemberDAOImpl.getInstance().update(param);
 		
 	}
 
 	@Override
 	public void remove(MemberBean member) {
-		// TODO Auto-generated method stub
+			MemberDAOImpl.getInstance().delete(member);
 		
 	}
 

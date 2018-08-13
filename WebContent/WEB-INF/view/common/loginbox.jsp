@@ -8,9 +8,6 @@
 		</div >
 		
 		
-		<script>
-		common.main('${context}');
-	</script>
-	
+
 
 

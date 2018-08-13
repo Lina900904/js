@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri= "http://java.sun.com/jsp/jstl/core"%>
-<c:set var="context" value="<%= application.getContextPath()%>"></c:set>
+
+<%-- <c:set var="context" value="<%= application.getContextPath()%>"></c:set>
 
 <!doctype html>
 <html lang="en">
@@ -10,8 +11,10 @@
 <jsp:include page="../common/head.jsp" />
 </head>
 <body>
-
-<div id = "join-Layout">
+ --%>
+ 
+ 
+<div id ="content-box">
 <h1> 회원가입</h1>
 
 <form id="join-Form" name ="join-Form">
@@ -111,8 +114,6 @@ document.getElementById('joinFormBtn')
 
 </script>
 
-</body>
-</html>
 
 
 

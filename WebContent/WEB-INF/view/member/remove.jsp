@@ -2,16 +2,8 @@
 <%@taglib prefix="c" uri= "http://java.sun.com/jsp/jstl/core"%>
 <c:set var="context" value="<%= application.getContextPath()%>"></c:set>
   
-<!doctype html>
-<html lang="en">
-<head>
-	<meta charset="UTF-8" />
-	<title>DELETE_FORM</title>
-<jsp:include page="../common/head.jsp" />
-</head>
 
-<body>
-
+<div id ="content-box"> 
 
 <h1>회원 삭제</h1>
 
@@ -55,8 +47,5 @@ document.getElementById('deleteFormBtn').addEventListener('click',
 			alert('입력한 id password  : ' + userid+pass);
 });
 </script>	
+	</div>
 	
-	
-	
-</body>
-</html>

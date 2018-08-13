@@ -58,13 +58,7 @@
 		</tr>
 	</table>
 </div>
-		<script>
 
-		
-		
-		
-	admin.main('${context}');
-	</script>
 	
 	
 	
