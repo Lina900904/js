@@ -72,7 +72,7 @@ public class MemberDAOImpl implements MemberDAO {
 		
 		q.play(param);
 		
-		
+		//
 		
 	}
 
