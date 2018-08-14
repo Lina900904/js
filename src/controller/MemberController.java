@@ -60,7 +60,7 @@ public class MemberController extends HttpServlet {
 				Receiver.cmd.execute();
 				Carrier.forword(request, response);
 			} else {
-				Carrier.redirect(request, response, "/member.do?action=move&page=login");
+				Carrier.redirect(request, response, "/member.do?action=move&page=retrieve");
 			}
 			break;
 		case RETRIEVE:
@@ -89,7 +89,6 @@ public class MemberController extends HttpServlet {
 			upload.setFileSizeMax(1024 * 1024 * 40);// 40MB
 			upload.setSizeMax(1024 * 1024 * 50); // 50MB
 			List<FileItem> items = null;
-			final String PATH = "C:\\Users\\1027\\Documents\\sample.txt";
 	
 			try {
 				System.out.println("----3.try 내부 진입-----");
@@ -102,13 +101,14 @@ public class MemberController extends HttpServlet {
 					FileItem item = (FileItem)iter.next();
 					if(!item.isFormField()) {
 						System.out.println("----6.if 진입-----");
-						String fieldName = item.getFieldName();
 						String fileName = item.getName();
-						boolean isInMemory = item.isInMemory();
-						long sizeInBytes = item.getSize();
-						file = new File(fileName);
+						file = new File(Term.UPLOAD_PATH+fileName);
 						item.write(file);
 						System.out.println("----7. 업로드 성공 ---");
+						System.out.println(fileName);
+						//이미지 테이블에 id, image name, ext저장
+						
+						
 					}else {
 						System.out.println("----8. 업로드 실패----");
 					}

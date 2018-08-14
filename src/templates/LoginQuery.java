@@ -8,19 +8,29 @@ import java.sql.SQLException;
 import domain.*;
 
 public class LoginQuery extends QueryTemplate {
+
 	MemberBean mem = null;
 	@Override
 	void initialize() {
+		System.out.println("로그인 쿼리~~~");
 		
-		map.put("sql",String.format(MemberQuery.LOGIN.toString(),
-				mem.getId(),mem.getPassword()));
-		System.out.println("@@@@@ dao에서 ID, PASS : "+mem.getId()+mem.getPassword());
+		map.put("sql",String.format(MemberQuery.LOGIN.toString()));
 		
 		
 	}
 
 	@Override
 	void startPlay() {
+		mem= (MemberBean) map.get("member");
+		try {
+			pstmt.setString(1, mem.getId());
+			pstmt.setString(2, mem.getPassword());
+			
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 
 		
 	}
@@ -28,20 +38,20 @@ public class LoginQuery extends QueryTemplate {
 	@Override
 	void endPlay() {
 		try {
-			ResultSet rs = pstmt.executeQuery();
-			while (rs.next()) {
-				  mem.setId(rs.getString("MEM_ID"));
-				  mem.setName(rs.getString("NAME"));
-				  mem.setTeamId(rs.getString("TEAM_ID"));                  
-				  mem.setRoll(rs.getString("ROLL"));
-				  mem.setPassword(rs.getString("PASSWORD"));
-				  mem.setSsn(rs.getString("SSN"));
-				  mem.setAge(rs.getString("AGE"));
-				  mem.setGender(rs.getString("GENDER"));
-				  
-				
-			}
-		} catch (SQLException e) {
+			 ResultSet rs = pstmt.executeQuery();
+			mem = new MemberBean();
+			while(rs.next()) {
+				mem.setId(rs.getString("ID"));
+				mem.setTeamId(rs.getString("TEAMID"));
+				mem.setName(rs.getString("NAME"));
+				mem.setAge(rs.getString("AGE"));
+				mem.setRoll(rs.getString("ROLL"));
+				mem.setGender(rs.getString("GENDER"));
+				mem.setPassword(rs.getString("PASSWORD"));
+				mem.setSsn(rs.getString("SSN"));
+				System.out.println("로그인 쿼리 입장" + mem.getName());
+		}
+			} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
@@ -50,3 +60,6 @@ public class LoginQuery extends QueryTemplate {
 	}
 
 }
+
+
+

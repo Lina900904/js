@@ -19,7 +19,7 @@ public class MemberDAOImpl implements MemberDAO {
 	public static MemberDAO getInstance() {return instance;}
 	private MemberDAOImpl() {};
 	private QueryTemplate q;
-
+	private HashMap<String, Object> map;
 
 	@Override
 	public List<MemberBean> selectSome(Map<?, ?> param) {
@@ -50,7 +50,11 @@ public class MemberDAOImpl implements MemberDAO {
 
 	@Override
 	public MemberBean selectOne(String id) {
-		return null;
+		HashMap<String, Object> map = new HashMap<>();
+		q= new RetrieveQuery();
+		map.put("userid", id);
+		q.play(map);
+		return q.getMem();
 	
 	
 	}
@@ -65,7 +69,10 @@ public class MemberDAOImpl implements MemberDAO {
 	@Override
 	public void update(Map<?, ?> param) {
 		q = new ModifyQuery();
-		q.play();
+		
+		q.play(param);
+		
+		
 		
 	}
 
@@ -78,9 +85,12 @@ public class MemberDAOImpl implements MemberDAO {
 
 	@Override
 	public MemberBean login(MemberBean member) {
+		map = new HashMap<>();
 		q = new LoginQuery();
-		q.play();
-		return member;
+		System.out.println("DAO로그인");
+		map.put("member", member);
+		q.play(map);
+		return (MemberBean) q.getO();
 		
 		
 	}

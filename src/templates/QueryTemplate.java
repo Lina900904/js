@@ -3,6 +3,7 @@ package templates;
 import java.sql.PreparedStatement;
 import java.util.*;
 
+import domain.ImageBean;
 import domain.MemberBean;
 import enums.Vendor;
 import factory.DatabaseFactory;
@@ -18,12 +19,15 @@ public abstract class QueryTemplate {
 	Object o;
 	int number;
 	int count;
+	MemberBean mem;
+	
 
 	abstract void initialize();
 	abstract void startPlay();
 	abstract void endPlay();
 
 	public final void play(Map<?, ?> param) {
+		this.o=null;
 		this.number = 0;
 		this.pstmt = null;
 		this.list = new ArrayList<>();
@@ -54,19 +58,17 @@ public abstract class QueryTemplate {
 		startPlay();
 		endPlay();
 	}
-	public final void play(MemberBean mem) {
-	mem = new MemberBean();
-	this.pstmt = null;
-	this.map.put("Vendor", Vendor.ORACLE);
-	this.map.put("userid", DBConstant.USERNAME);
-	this.map.put("password", DBConstant.PASSWORD);
-	initialize();
-	pstmtInit();
-	startPlay();
-	endPlay();
-	
-		
-		
+
+	public final void play(ImageBean img) {
+		img = new ImageBean();
+		this.pstmt = null;
+		this.map.put("Vendor", Vendor.ORACLE);
+		this.map.put("userid", DBConstant.USERNAME);
+		this.map.put("password", DBConstant.PASSWORD);
+		initialize();
+		pstmtInit();
+		startPlay();
+		endPlay();
 	}
 	
 	public void pstmtInit() {

@@ -1,18 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri= "http://java.sun.com/jsp/jstl/core"%>
 
-<%-- <c:set var="context" value="<%= application.getContextPath()%>"></c:set>
 
-<!doctype html>
-<html lang="en">
-<head>
-	<meta charset="UTF-8" />
-	<title>JOIN</title>
-<jsp:include page="../common/head.jsp" />
-</head>
-<body>
- --%>
- 
  
 <div id ="content-box">
 <h1> 회원가입</h1>
@@ -60,59 +49,7 @@ PASSWORD <input type="text" name = "password" /><br />
 </form>
 </div>
 
-<script>
 
-document.getElementById('joinFormBtn')
-.addEventListener('click', 
-		function () {
-	var form = document.getElementById('join-Form');
-
-	var x= service.nullChecker(
-			[form.userid.value,
-				form.password.value,
-				form.ssn.value,
-				form.name.value]);
-
-	if(x.checker){	
-		form.action="${context}/member.do";
-		form.method="post";		
-	member.join([form.userid.value,
-					form.password.value,
-					form.ssn.value,
-					form.name.value]);
-	
-	/* 	var node = document.createElement('input');
-		node.innerHTML = '<input type="hidden" name = "action" value = "join" />'
-		+'<input type="hidden" name = "gender" />'
-		+'<input type="hidden" name = "age" />';
-		form.appendChild(node); */
-	
-		var json = [
-			{name:'action',value:'join'},
-			{name:'gender', value: member.getGender()},
-			{name:'age',value: member.getAge()}	];
-		var i =0;
-		for(i in json){
-			var node = document.createElement('input');	
-			node.setAttribute('type','hidden');
-			node.setAttribute('name',json[i].name);
-			node.setAttribute('value',json[i].value);
-			/* form.gender.value = member.getGender(); hidden에 있는 value값
-			form.age.value = member.getAge();	 */
-	 
-			form.appendChild(node);
-		}
-		
-		form.submit();
-	}else{
-		alert(x.text);
-
-	}
-	
-	
-});
-
-</script>
 
 
 

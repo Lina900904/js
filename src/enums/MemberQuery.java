@@ -3,13 +3,13 @@ package enums;
 import templates.ColumnFinder;
 
 public enum MemberQuery {
-	LOGIN, ADD,RETRIEVE,COUNT,UPDATE,DELETE, SEARCH, LIST, ;	
+	LOGIN, ADD,RETRIEVE,COUNT,UPDATE,DELETE, SEARCH, LIST,  ;	
 @Override
 	public String toString() {
 		String query="";
 		switch(this) {
 		case LOGIN :
-			query=" SELECT * "
+			query=" SELECT  " + ColumnFinder.find(Domain.MEMBER)
 		              + "    FROM MEMBER  "
 		              + "    WHERE ID LIKE ? AND PASSWORD LIKE ? ";
 			break;

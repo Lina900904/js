@@ -5,6 +5,7 @@ import java.sql.SQLException;
 
 import domain.MemberBean;
 import enums.Domain;
+import enums.ImageSQL;
 import factory.DatabaseFactory;
 import lombok.Data;
 
@@ -12,6 +13,7 @@ public class ModifyQuery extends QueryTemplate {
 
 	@Override
 	void initialize() {
+		//map.put("sql", ImageSQL)
 
 	
 	

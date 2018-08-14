@@ -10,6 +10,7 @@ import java.util.Scanner;
 
 import com.sun.crypto.provider.RSACipher;
 
+import enums.Term;
 import sun.security.util.Length;
 
 public class FileDemo {
@@ -39,6 +40,7 @@ public class FileDemo {
 					while((msg =reader.readLine()) !=null) {
 						System.out.println(msg);
 						
+						
 					}
 				reader.close();
 					break;
@@ -56,6 +58,9 @@ public class FileDemo {
 		System.out.println("파일명 :" + fn.getFileName());
 		System.out.println("확장자 :" + fn.getExt());
 
+		
+		
+		
 	}
 }
 

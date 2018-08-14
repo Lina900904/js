@@ -3,47 +3,54 @@ package templates;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
+import domain.ImageBean;
 import domain.MemberBean;
 import enums.Domain;
+import enums.MemberQuery;
 import factory.DatabaseFactory;
 import lombok.Data;
 
 public class RetrieveQuery extends QueryTemplate {
-
+	MemberBean mem = null;
+	
 	@Override
 	void initialize() {
-
-			
-	
-	
+		map.put("sql",
+				String.format(
+						MemberQuery.RETRIEVE.toString()));
+		
+		
+	}
+	@Override
+	void startPlay() {
+		try {
+			pstmt.setString(1, mem.getId());
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		
 	}
 
-	
-		
-	
 
 	@Override
 	void endPlay() {
 		try {
 			ResultSet rs = pstmt.executeQuery();
-			MemberBean mem = null;
-			while (rs.next()) {
-				mem = new MemberBean();			 
-				mem.setId(rs.getString("userid"));
-				mem.setName(rs.getString("name"));
-				mem.setPassword(rs.getString("password"));
-				mem.setSsn(rs.getString("ssn"));
-				mem.setAge(rs.getString("age"));
-				mem.setGender(rs.getString("gender"));
-				mem.setTeamId(rs.getString("teamid"));
-				mem.setRoll(rs.getString("roll"));
-				list.add(mem);
-				
+			mem = new MemberBean();
+			while(rs.next()) {
+				mem.setId(rs.getString("USERID"));
+				mem.setTeamId(rs.getString("TEAMID"));
+				mem.setName(rs.getString("NAME"));
+				mem.setAge(rs.getString("AGE"));
+				mem.setRoll(rs.getString("ROLL"));
+				mem.setGender(rs.getString("GENDER"));
+				mem.setPassword(rs.getString("PASSWORD"));
+				mem.setSsn(rs.getString("SSN"));
+				System.out.println("쿼리 리트리버 입장" + mem.getName());
 			}
-			System.out.println(list);
-		} catch (Exception e) {
-			// TODO: handle exception
+		} catch (SQLException e) {
+			e.printStackTrace();
 		}
 	}
 
@@ -51,11 +58,6 @@ public class RetrieveQuery extends QueryTemplate {
 
 
 
-	@Override
-	void startPlay() {
-		// TODO Auto-generated method stub
-		
-	}
 
 	
 	

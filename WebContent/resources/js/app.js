@@ -85,24 +85,7 @@ var common = (()=>{
 					});
 				
 
-				document.getElementById('loginFormBtn').addEventListener('click',
-						function() {	
-					var form = document.getElementById('user_login_form');
-					var x = service.nullChecker(
-							[form.userid.value,form.password.value]);
-						
-							
-							if(x.checker){		
-							var node = document.createElement('input');
-							node.innerHTML = '<input type="hidden" name="action" value="login" />';
-							form.appendChild(node);
-								form.action = "$/member.do";
-								form.method = "post";
-								form.submit();
-							}else{
-								alert(x.text);
-							}
-						});
+				
 			 
 		
 	}
@@ -225,8 +208,8 @@ var member=(()=> { //클로져를 사용한 객체 (보안을 위해)
 				member.setGender(x);
 			},
 			main : x=>{
-			
-				document.getElementById('updateBtn').addEventListener(
+				if( document.getElementById('updateBtn') != null){
+					document.getElementById('updateBtn').addEventListener(
 							'click', function() {
 								alert('수정버튼 클릭함');
 								router.move({context : x,
@@ -234,26 +217,80 @@ var member=(()=> { //클로져를 사용한 객체 (보안을 위해)
 									action : 'move',
 									page : 'modify'}); 
 							});
-			document.getElementById('deleteBtn').addEventListener(
-						'click', function() {
-							alert('수정확인버튼 클릭함');
-							router.move({context : x,
-								domain : 'member',
-								action : 'move',
-								page : 'remove'}); 
-						});	
+				}else if(document.getElementById('deleteBtn') != null){
+					document.getElementById('deleteBtn').addEventListener(
+							'click', function() {
+								alert('수정확인버튼 클릭함');
+								router.move({context : x,
+									domain : 'member',
+									action : 'move',
+									page : 'remove'}); 
+							});	
+					
+				}else if(document.getElementById('joinFormBtn') != null){
+					document.getElementById('joinFormBtn')
+					.addEventListener('click', 
+							function () {
+						alert('조인버튼 클릭함');
+						var form = document.getElementById('join-Form');
+
+						var x= service.nullChecker(
+								[form.userid.value,
+									form.password.value,
+									form.ssn.value,
+									form.name.value]);
+
+						if(x.checker){	
+							form.action=x+"/member.do";
+							form.method="post";		
+						member.join([form.userid.value,
+										form.password.value,
+										form.ssn.value,
+										form.name.value]);
+						
+						
+							var json = [
+								{name:'action',value:'add'},
+								{name:'gender', value: member.getGender()},
+								{name:'age',value: member.getAge()}	];
+							var i =0;
+							for(i in json){
+								var node = document.createElement('input');	
+								node.setAttribute('type','hidden');
+								node.setAttribute('name',json[i].name);
+								node.setAttribute('value',json[i].value);
+								form.appendChild(node);
+							}
+							
+							form.submit();
+						}else{
+							alert(x.text);
+
+						}
+					});
+					}else if(document.getElementById('loginFormBtn')!=null){
+						document.getElementById('loginFormBtn').addEventListener('click',
+								function() {	
+							var form = document.getElementById('login');
+							var	z = service.nullChecker(
+									[form.userid.value,form.password.value]);
+									
+									if(z.checker){		
+									var node = document.createElement('input');
+									node.innerHTML = '<input type="hidden" name="action" value="login" />';
+									form.appendChild(node);
+										form.action = x +"/member.do";
+										form.method = "post";
+										form.submit();
+									}else{
+										alert(z.text);
+									}
+								});	
+						
+					}
 				
 				
-				
-				
-				
-			}
-				};
-				
-		
-	
-				
-				
-				
+					
+				}};
 		})();
 		

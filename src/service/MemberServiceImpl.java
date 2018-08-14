@@ -55,7 +55,7 @@ public class MemberServiceImpl implements MemeberService {
 	@Override
 	public boolean login(MemberBean member) {
 		
-		return MemberDAOImpl.getInstance().login(member)!=null;
+		return (MemberDAOImpl.getInstance().login(member)!=null);
 	}
 
 	
