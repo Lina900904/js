@@ -9,7 +9,7 @@
 		<table id="mypage-table">
 			<tr>
 				<td id="mypage-img" rowspan="7" colspan="2" >
-				<img src="${img}/${profile}" />
+				<img src="${img}/${profile}"/>
 				<td>아이디</td>
 				<td>${member.id}</td>
 				

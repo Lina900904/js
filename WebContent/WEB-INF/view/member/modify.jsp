@@ -10,7 +10,7 @@
 				<td id="mypage-img" rowspan="7" colspan="2"><img
 					src="resources/img/home/turtle.PNG" />
 				<td>아이디</td>
-				<td>${user.name}</td>
+				<td>${member.name}</td>
 			</tr>
 			<tr>
 				<td>새비밀번호</td>
@@ -18,12 +18,12 @@
 			</tr>
 			<tr>
 				<td>나이</td>
-				<td>${user.age}</td>
+				<td>${member.age}</td>
 			</tr>
 
 			<tr>
 				<td>성별</td>
-				<td>${user.gender}</td>
+				<td>${member.gender}</td>
 			</tr>
 
 			<tr>
@@ -74,21 +74,6 @@
 			}
 		}
 
-		document
-				.getElementById('updateFormBtn')
-				.addEventListener(
-						'click',
-						function() {
-							var node = document.createElement('input');
-							node.innerHTML = '<input type="hidden" name = "action" value = "modify"/>';
-							form.appendChild(node);
-
-							alert('수정완료버튼 클릭함');
-
-							form.action = "${context}/member.do";
-							form.method = "post";
-							form.submit();
-
-						});
+		
 	</script>
 </div>

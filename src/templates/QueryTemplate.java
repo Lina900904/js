@@ -19,7 +19,7 @@ public abstract class QueryTemplate {
 	Object o;
 	int number;
 	int count;
-	MemberBean mem;
+	ImageBean img ;
 	
 
 	abstract void initialize();
@@ -27,14 +27,15 @@ public abstract class QueryTemplate {
 	abstract void endPlay();
 
 	public final void play(Map<?, ?> param) {
+		img = new ImageBean();
 		this.o=null;
 		this.number = 0;
 		this.pstmt = null;
 		this.list = new ArrayList<>();
 		this.map = new HashMap<>();
 		this.map.put("Vendor", Vendor.ORACLE);
-		this.map.put("userid", DBConstant.USERNAME);
-		this.map.put("password", DBConstant.PASSWORD);
+		this.map.put("dbId", DBConstant.USERNAME);
+		this.map.put("dbPass", DBConstant.PASSWORD);
 		Iterator<?> keys = param.keySet().iterator();
 		while (keys.hasNext()) {
 			String key = (String) keys.next();
@@ -51,8 +52,8 @@ public abstract class QueryTemplate {
 		this.pstmt = null;
 		this.map = new HashMap<>();
 		this.map.put("Vendor", Vendor.ORACLE);
-		this.map.put("userid", DBConstant.USERNAME);
-		this.map.put("password", DBConstant.PASSWORD);
+		this.map.put("dbId", DBConstant.USERNAME);
+		this.map.put("dbPass", DBConstant.PASSWORD);
 		initialize();
 		pstmtInit();
 		startPlay();
@@ -61,10 +62,11 @@ public abstract class QueryTemplate {
 
 	public final void play(ImageBean img) {
 		img = new ImageBean();
+		this.map = new HashMap<>();
 		this.pstmt = null;
 		this.map.put("Vendor", Vendor.ORACLE);
-		this.map.put("userid", DBConstant.USERNAME);
-		this.map.put("password", DBConstant.PASSWORD);
+		this.map.put("dbId", DBConstant.USERNAME);
+		this.map.put("dbPass", DBConstant.PASSWORD);
 		initialize();
 		pstmtInit();
 		startPlay();
@@ -81,7 +83,6 @@ public abstract class QueryTemplate {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		
 	}
 
 }

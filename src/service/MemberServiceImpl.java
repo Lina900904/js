@@ -20,8 +20,7 @@ public class MemberServiceImpl implements MemeberService {
 
 	@Override
 	public void add(MemberBean member) {
-		// TODO Auto-generated method stub
-		
+		MemberDAOImpl.getInstance().insert(member);
 	}
 
 	@Override
@@ -31,7 +30,6 @@ public class MemberServiceImpl implements MemeberService {
 
 	@Override
 	public MemberBean retrieve(String id) {
-		
 		return MemberDAOImpl.getInstance().selectOne(id);
 	}
 
@@ -54,8 +52,7 @@ public class MemberServiceImpl implements MemeberService {
 
 	@Override
 	public boolean login(MemberBean member) {
-		
-		return (MemberDAOImpl.getInstance().login(member)!=null);
+		return MemberDAOImpl.getInstance().login(member);
 	}
 
 	

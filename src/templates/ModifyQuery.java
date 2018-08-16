@@ -6,6 +6,7 @@ import java.sql.SQLException;
 import domain.MemberBean;
 import enums.Domain;
 import enums.ImageSQL;
+import enums.MemberQuery;
 import factory.DatabaseFactory;
 import lombok.Data;
 
@@ -13,13 +14,32 @@ public class ModifyQuery extends QueryTemplate {
 
 	@Override
 	void initialize() {
-		//map.put("sql", ImageSQL)
+	
+
+		map.put("sql", MemberQuery.UPDATE.toString() );
 
 	
 	
 		
 	}
 
+	@Override
+	void startPlay() {
+	
+		try {
+			pstmt.setString(1, (String) map.get("newpass"));
+			pstmt.setString(2, (String) map.get("teamid"));
+			pstmt.setString(3, (String) map.get("roll"));
+			pstmt.setString(4, (String) map.get("id"));
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	
+		
+		
+	}
 
 		
 		
@@ -28,24 +48,13 @@ public class ModifyQuery extends QueryTemplate {
 	@Override
 	void endPlay() {
 		try {
-			ResultSet rs = pstmt.executeQuery();
-			MemberBean mem = null;
-			while (rs.next()) {
-				mem = new MemberBean();			 
-				mem.setId(rs.getString("userid"));
-				mem.setName(rs.getString("name"));
-				mem.setPassword(rs.getString("password"));
-				mem.setSsn(rs.getString("ssn"));
-				mem.setAge(rs.getString("age"));
-				mem.setGender(rs.getString("gender"));
-				mem.setTeamId(rs.getString("teamid"));
-				mem.setRoll(rs.getString("roll"));
-				list.add(mem);
-				
-			}
-			System.out.println(list);
-		} catch (Exception e) {
-			// TODO: handle exception
+			pstmt.executeQuery();
+			
+			
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
 		}
 	}
 
@@ -54,11 +63,6 @@ public class ModifyQuery extends QueryTemplate {
 
 
 
-	@Override
-	void startPlay() {
-		// TODO Auto-generated method stub
-		
-	}
 
 	
 	

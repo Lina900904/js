@@ -37,47 +37,15 @@ public class AddCommand extends Command{
 			joinm.setGender(request.getParameter("gender"));
 			joinm.setTeamId(request.getParameter("teamid"));
 			joinm.setRoll(request.getParameter("roll"));
-			//joinm.setSubject(ParamMap.gatValuse(request,"subject"));
-			MemberServiceImpl.getInstance().add(joinm);	
+			MemberServiceImpl.getInstance().add(joinm);
+	
 			request.setAttribute("pagename", "add");
 			
-			img = new ImageBean();
-			/*img.setExtension(extension);
-			img.setImgname(imgname);
-			img.setImgseq(imgseq);
-			img.setUserid(userid);*/
+			System.out.println(joinm);
 			
-		
-			System.out.println("회원가입 성공");
-			
-			 File file = new File(Term.UPLOAD_PATH.toString());
-			 String path = Term.UPLOAD_PATH.toString();
-			 String sep = File.separator;
-			 String ext = path.substring(path.lastIndexOf(".") + 1);
-			 String fileName = path.substring(path.lastIndexOf(sep) + 1, path.lastIndexOf("."));
-			System.out.println(path);
-			System.out.println(sep);
-			System.out.println(ext);
-			System.out.println(path);
-			
-			//String img = "";
-			// ImageServiceImpl.getInstance().insertImg(img);
-			 
-			 String imgPath = "/upload/" +img; 
-			 request.setAttribute("img", imgPath);
-			 
-			break;
-		/*	joinm.setAge(request.getParameter(String.valueOf(
-					Integer.valueOf(new SimpleDateFormat("yyyy").format(new Date()))-1900+1
-					-
-					Integer.parseInt(joinm.getSsn().substring(0, 2)))));
-					
 
-			if(request.getParameter("gender").substring(8, 1).equals("1")) {
-				joinm.setGender("남자");
-			}else {
-				joinm.setGender("여자");
-			}*/
+	
+			break;
 		
 		
 

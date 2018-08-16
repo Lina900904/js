@@ -15,7 +15,7 @@ public class DatabaseFactory {
 		case ORACLE:
 			driver = DBConstant.ORACLE_DRIVER;
 			url = DBConstant.CONNECTION_URL;
-			db = new Oracle(driver, url, (String) map.get("userid"), (String) map.get("password"));
+			db = new Oracle(driver, url, (String) map.get("dbId"), (String) map.get("dbPass"));
 			break;
 		case MARIADB:
 			driver = DBConstant.MRIADB_DRIVER;

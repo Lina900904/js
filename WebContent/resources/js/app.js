@@ -234,14 +234,14 @@ var member=(()=> { //클로져를 사용한 객체 (보안을 위해)
 						alert('조인버튼 클릭함');
 						var form = document.getElementById('join-Form');
 
-						var x= service.nullChecker(
+						var z= service.nullChecker(
 								[form.userid.value,
 									form.password.value,
 									form.ssn.value,
 									form.name.value]);
 
-						if(x.checker){	
-							form.action=x+"/member.do";
+						if(z.checker){	
+							form.action= x + "/member.do";
 							form.method="post";		
 						member.join([form.userid.value,
 										form.password.value,
@@ -287,6 +287,22 @@ var member=(()=> { //클로져를 사용한 객체 (보안을 위해)
 									}
 								});	
 						
+					}else if(document.getElementById('updateFormBtn')){
+						document.getElementById('updateFormBtn')
+						.addEventListener(
+								'click',
+								function() {
+									var node = document.createElement('input');
+									node.innerHTML = '<input type="hidden" name = "action" value = "modify"/>';
+									form.appendChild(node);
+
+									alert('수정완료버튼 클릭함');
+
+									form.action = x+"/member.do";
+									form.method = "post";
+									form.submit();
+
+								});
 					}
 				
 				

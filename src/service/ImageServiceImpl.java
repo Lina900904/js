@@ -1,5 +1,6 @@
 package service;
 
+import dao.ImageDAOImpl;
 import domain.ImageBean;
 
 public class ImageServiceImpl implements ImageService{
@@ -11,8 +12,12 @@ public class ImageServiceImpl implements ImageService{
 
 	@Override
 	public void insertImg(ImageBean img) {
-		ImageServiceImpl.getInstance().insertImg(img);
+		ImageDAOImpl.getInstance().insertImg(img);
 		
+	}
+	@Override
+	public String modify(String word) {
+		return ImageDAOImpl.getInstance().modifyImg(word);
 	}
 	
 

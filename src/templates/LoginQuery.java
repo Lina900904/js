@@ -5,54 +5,47 @@ import enums.MemberQuery;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
+
 import domain.*;
 
 public class LoginQuery extends QueryTemplate {
 
-	MemberBean mem = null;
 	@Override
 	void initialize() {
 		System.out.println("로그인 쿼리~~~");
-		
-		map.put("sql",String.format(MemberQuery.LOGIN.toString()));
-		
-		
+		map.put("sql",MemberQuery.LOGIN.toString());
 	}
 
 	@Override
 	void startPlay() {
-		mem= (MemberBean) map.get("member");
 		try {
-			pstmt.setString(1, mem.getId());
-			pstmt.setString(2, mem.getPassword());
-			
+			pstmt.setString(1, (String) map.get("id"));
+			pstmt.setString(2, (String) map.get("pass"));
+			System.out.println("startPlay"+map.get("id")+"/"+map.get("pass"));
 			
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-
-		
 	}
 
 	@Override
 	void endPlay() {
 		try {
 			 ResultSet rs = pstmt.executeQuery();
-			mem = new MemberBean();
+				System.out.println(" ResultSet" );
 			while(rs.next()) {
-				mem.setId(rs.getString("ID"));
-				mem.setTeamId(rs.getString("TEAMID"));
-				mem.setName(rs.getString("NAME"));
-				mem.setAge(rs.getString("AGE"));
-				mem.setRoll(rs.getString("ROLL"));
-				mem.setGender(rs.getString("GENDER"));
-				mem.setPassword(rs.getString("PASSWORD"));
-				mem.setSsn(rs.getString("SSN"));
-				System.out.println("로그인 쿼리 입장" + mem.getName());
+				o = new MemberBean();
+				((MemberBean)o).setId(rs.getString("ID"));
+				((MemberBean)o).setTeamId(rs.getString("TEAMID"));
+				((MemberBean)o).setName(rs.getString("NAME"));
+				((MemberBean)o).setAge(rs.getString("AGE"));
+				((MemberBean)o).setRoll(rs.getString("ROLL"));
+				((MemberBean)o).setGender(rs.getString("GENDER"));
+				((MemberBean)o).setPassword(rs.getString("PASSWORD"));
+				((MemberBean)o).setSsn(rs.getString("SSN"));
+				System.out.println("로그인 쿼리 입장" + o);
 		}
 			} catch (SQLException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		

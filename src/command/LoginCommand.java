@@ -9,6 +9,7 @@ import service.MemberServiceImpl;
 
 public class LoginCommand extends Command {
 	public LoginCommand (HttpServletRequest request) {
+		System.out.println("*** [2] LoginCommand Contructor ENTER");
 		setRequest(request); //super가 생략되어 있음, 위에 request와는 본질적으로 다르지만 setRequest를 해줌으로써 같아짐
 		setDomain(request.getServletPath().substring(1, request.getServletPath().indexOf(".")));
 		setAction(request.getParameter("action"));
@@ -18,28 +19,30 @@ public class LoginCommand extends Command {
 	}
 	@Override
 	public void execute() {
-	
-		System.out.println("로그인커맨드 진입~~~~~~!!!!");
-		request.setAttribute("pagename", "login");
+		System.out.println("*** [3] LoginCommand execute() ENTER");
+		request.setAttribute("pagename", "retrieve");
 		super.execute(); //-> view
 		MemberBean lom= new MemberBean();
 	
 		lom.setId(request.getParameter("userid"));
 		lom.setPassword(request.getParameter("password"));
-		System.out.println(lom);
+		System.out.println("*** [4] LoginCommand lom toString :: "+lom);
 	
 		if(MemberServiceImpl.getInstance().login(lom)) {
-			System.out.println("Login Success!!!");
+			System.out.println("*** [5] LoginCommand SUCCESS ");
 			request.setAttribute("match", "TRUE");
-			request.getSession().setAttribute("user", 
+			request.getSession().setAttribute("member", 
 					MemberServiceImpl
 					.getInstance()
 					.retrieve(request.getParameter("userid")));
+			
+			System.out.println(request.getSession().getAttribute("member"));
+			//request.getSession().setAttribute("profile", arg1);
 	
-			System.out.println("request user : \n"+request.getAttribute("user"));
-		}else{request.setAttribute("match", "FALSE");
-			System.out.println("null값");
-			}
+		}else{
+			request.setAttribute("match", "FALSE");
+			System.out.println("*** [5] LoginCommand FAIL ");
+		}
 		
 }
 	

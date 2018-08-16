@@ -44,7 +44,22 @@ public class MemberDAOImpl implements MemberDAO {
 
 	@Override
 	public void insert(MemberBean member) {
-		// TODO Auto-generated method stub
+		System.out.println("insert member값"+member);
+		HashMap<String, Object> map = new HashMap<>();
+		map.put("table", Domain.MEMBER);
+		map.put("userid", member.getId());
+		map.put("name", member.getName());
+		map.put("password", member.getPassword());
+		map.put("ssn", member.getSsn());
+		map.put("age", member.getAge());
+		map.put("gender", member.getGender());
+		map.put("teamid", member.getTeamId());
+		map.put("roll", member.getRoll());
+		q= new AddQuery();
+		q.play(map);
+		
+		
+		
 		
 	}
 
@@ -54,9 +69,7 @@ public class MemberDAOImpl implements MemberDAO {
 		q= new RetrieveQuery();
 		map.put("userid", id);
 		q.play(map);
-		return q.getMem();
-	
-	
+		return (MemberBean) q.getO();
 	}
 
 	@Override
@@ -68,11 +81,13 @@ public class MemberDAOImpl implements MemberDAO {
 
 	@Override
 	public void update(Map<?, ?> param) {
+		
 		q = new ModifyQuery();
+		
 		
 		q.play(param);
 		
-		//
+		
 		
 	}
 
@@ -84,13 +99,20 @@ public class MemberDAOImpl implements MemberDAO {
 	}
 
 	@Override
-	public MemberBean login(MemberBean member) {
-		map = new HashMap<>();
+	public boolean login(MemberBean member) {
+		boolean isOk = false;
+		HashMap<String, Object> map = new HashMap<>();
 		q = new LoginQuery();
+	
 		System.out.println("DAO로그인");
-		map.put("member", member);
+		map.put("id", member.getId());
+		map.put("pass", member.getPassword());
 		q.play(map);
-		return (MemberBean) q.getO();
+
+		if(((MemberBean) q.getO()).getPassword()!=null) {
+			isOk = true;
+		}
+		return isOk;
 		
 		
 	}

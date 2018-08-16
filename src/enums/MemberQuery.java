@@ -15,11 +15,12 @@ public enum MemberQuery {
 			break;
 		case ADD :
 			query= "     INSERT INTO MEMBER "
-		              + "    ( * )  "
-		              + "    VALUES ( ? , ? , ? , ? , ? , ?, ? , ?, ?) ";
+		              + " ( id, password,ssn,name, gender, roll,   teamId, age ) "
+		              + "    VALUES ( ? , ? , ? , ? , ? , ?, ? , ?) ";
+			
 			break;
 		case 	RETRIEVE :
-			query = "SELECT" + ColumnFinder.find(Domain.MEMBER)
+			query = " SELECT " + ColumnFinder.find(Domain.MEMBER)
 		              + "    FROM MEMBER  " 
 					+ "  WHERE ID LIKE ? " ;
 			break;
@@ -29,9 +30,11 @@ public enum MemberQuery {
 			
 			break;
 		case 	UPDATE :
-			query = " UPDATE  " 
-					+ " MEMBER SET %s = ? "
-					+ " WHERE ID LIKE ? ";
+			query = " UPDATE MEMBER "
+					  + " SET password = ?, "
+					  + " teamid = ?, "
+					  + " roll = ? "
+					  + " WHERE ID LIKE ? ";
 			
 			break;
 		case 	DELETE :

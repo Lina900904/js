@@ -19,7 +19,7 @@ public interface MemberDAO {
 	public int count();
 	public void update(Map<?, ?>param);
 	public void delete(MemberBean member);
-	public MemberBean login(MemberBean member);
+	public boolean login(MemberBean member);
 
 	
 
