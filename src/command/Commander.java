@@ -55,7 +55,7 @@ public class Commander {
 			cmd = new CountCommand(request);
 			break;
 		case FILEUPLOAD :
-			System.out.println("카운트 진입");
+			System.out.println("파일 업로드 진입");
 			cmd = new FileCommand(request);
 			break;
 

@@ -18,9 +18,10 @@ public class ImageDAOImpl implements ImageDAO{
 
 	@Override
 	public void insertImg(ImageBean img) {
-		
+		HashMap<String, Object>map = new HashMap<>();
 		q = new AddQuery();
-	//	map.put("table",Domain.IMG);
+		map.put("table",Domain.IMG);
+	
 		q.play(img);
 		
 		

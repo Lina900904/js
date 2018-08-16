@@ -7,5 +7,5 @@ public class ImageBean {
 	private String imgseq;
 	private String imgname;
 	private String extension;
-	private String userid;
+	private String id;
 }

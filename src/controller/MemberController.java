@@ -77,7 +77,7 @@ public class MemberController extends HttpServlet {
 			Carrier.forword(request, response);
 			break;
 		case FILEUPLOAD:
-			Carrier.redirect(request, response, "/member.do?action=retrieve&page=login");
+			Carrier.forword(request, response);
 			break;
 
 			

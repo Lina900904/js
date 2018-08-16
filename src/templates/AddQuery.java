@@ -53,7 +53,7 @@ public class AddQuery extends QueryTemplate {
 				//pstmt.setString(1, (String) map.get("IMG_SEQ"));
 				pstmt.setString(2, img.getImgname() );
 				pstmt.setString(3, img.getExtension());
-				pstmt.setString(4, img.getUserid());
+				pstmt.setString(4, img.getId());
 				break;
 			default:
 				break;

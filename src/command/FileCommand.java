@@ -36,7 +36,8 @@ public class FileCommand extends Command{
 		HashMap<String, Object>map = new HashMap<>();
 		ImageBean img = new ImageBean();
 		MemberBean member = 
-				(MemberBean) request.getSession().getAttribute("user");
+				(MemberBean) request.getSession().getAttribute("member");
+		System.out.println("session id"+member.getId());
 		System.out.println("----1-----");
 		if (!ServletFileUpload.isMultipartContent(request)) {
 			System.out.println("업로드 파일 없음");
@@ -57,9 +58,11 @@ public class FileCommand extends Command{
 			System.out.println("----4 아이템 생성-----");
 			Iterator<FileItem>iter = items.iterator();
 			while (iter.hasNext()) {
+				
 				System.out.println("----5. while 진입-----");
 				FileItem item = (FileItem)iter.next();
 				if(!item.isFormField()) {
+					
 					System.out.println("----6.if 진입-----");
 					String fileName = item.getName();
 					file = new File(Term.UPLOAD_PATH+fileName);
@@ -67,14 +70,14 @@ public class FileCommand extends Command{
 					item.write(file);
 					System.out.println("----7. 업로드 성공 ---");
 					System.out.println("업로드용 네임~~"+fileName);
-			
+					img.setImgname(fileName.split("\\.")[0]);
 					img.setExtension(fileName.substring(fileName.lastIndexOf("\\") + 1));
-					img.setImgname(fileName.split(".")[0]);
-					img.setUserid(member.getId());
+					img.setId(member.getId());
 					ImageServiceImpl.getInstance().insertImg(img);
-			
+					System.out.println(img.getImgname());
+					System.out.println(img.getExtension());
+					System.out.println(img.getId());
 					
-					request.setAttribute("pagename", "retrieve");
 					
 					
 					/* File file = new File(Term.UPLOAD_PATH.toString());

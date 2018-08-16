@@ -39,7 +39,7 @@ public class AddCommand extends Command{
 			joinm.setRoll(request.getParameter("roll"));
 			MemberServiceImpl.getInstance().add(joinm);
 	
-			request.setAttribute("pagename", "add");
+			request.setAttribute("pagename", "retrieve");
 			
 			System.out.println(joinm);
 			
