@@ -30,7 +30,6 @@ public class CommonController extends HttpServlet {
 								request.getContextPath() :			
 									request.getContextPath()
 									+ "/resources/" + r.toString().toLowerCase());
-				
 			i++;
 			}
 		System.out.println(" JS 값==========>"+request.getSession().getAttribute("js")); //org.apache.catalina.session.StandardSessionFacade@7da3d2cd

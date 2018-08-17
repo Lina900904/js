@@ -23,7 +23,6 @@ public class MemberDAOImpl implements MemberDAO {
 
 	@Override
 	public List<MemberBean> selectSome(Map<?, ?> param) {
-		
 		q = new SearchQuery();
 		List<MemberBean> list = new ArrayList<>();
 		HashMap<String, Object> map = new HashMap<>();
@@ -39,9 +38,7 @@ public class MemberDAOImpl implements MemberDAO {
 		}
 		System.out.println("리스트=======" + list);
 		return list;
-		
 	}
-
 	@Override
 	public void insert(MemberBean member) {
 		System.out.println("insert member값"+member);

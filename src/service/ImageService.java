@@ -1,10 +1,13 @@
 package service;
 
+import java.util.HashMap;
+import java.util.Map;
+
 import domain.ImageBean;
 
 public interface ImageService {
-	public void insertImg(ImageBean img);
-	public String modify(String word);
+	public void insertImg(Map<?, ?> param);
+	public String retrieve(String word);
 	
 
 }

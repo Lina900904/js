@@ -2,7 +2,6 @@ package enums;
 
 public enum Term {
 	WEBPATH, MAIN, CONTEXT, COMMON, UPLOAD_PATH;
-	
 	@Override
 	public String toString() {
 		String res = "";

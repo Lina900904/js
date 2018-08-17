@@ -1,6 +1,7 @@
 package templates;
 
 import java.sql.PreparedStatement;
+
 import java.util.*;
 
 import domain.ImageBean;
@@ -9,7 +10,6 @@ import enums.Vendor;
 import factory.DatabaseFactory;
 import lombok.Data;
 import pool.DBConstant;
-
 //step1
 @Data
 public abstract class QueryTemplate {
@@ -21,13 +21,12 @@ public abstract class QueryTemplate {
 	int count;
 	ImageBean img ;
 	
-
 	abstract void initialize();
 	abstract void startPlay();
 	abstract void endPlay();
 
 	public final void play(Map<?, ?> param) {
-		img = new ImageBean();
+		
 		this.o=null;
 		this.number = 0;
 		this.pstmt = null;
@@ -46,7 +45,6 @@ public abstract class QueryTemplate {
 		startPlay();
 		endPlay();
 	}
-	
 	public final void play() {
 		this.number = 0;
 		this.pstmt = null;
@@ -60,18 +58,6 @@ public abstract class QueryTemplate {
 		endPlay();
 	}
 
-	public final void play(ImageBean img) {
-		img = new ImageBean();
-		this.map = new HashMap<>();
-		this.pstmt = null;
-		this.map.put("Vendor", Vendor.ORACLE);
-		this.map.put("dbId", DBConstant.USERNAME);
-		this.map.put("dbPass", DBConstant.PASSWORD);
-		initialize();
-		pstmtInit();
-		startPlay();
-		endPlay();
-	}
 	
 	public void pstmtInit() {
 		try {

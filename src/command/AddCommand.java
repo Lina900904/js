@@ -42,7 +42,6 @@ public class AddCommand extends Command{
 			request.setAttribute("pagename", "retrieve");
 			
 			System.out.println(joinm);
-			
 
 	
 			break;

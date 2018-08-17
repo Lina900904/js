@@ -15,7 +15,6 @@ public class LoginQuery extends QueryTemplate {
 		System.out.println("로그인 쿼리~~~");
 		map.put("sql",MemberQuery.LOGIN.toString());
 	}
-
 	@Override
 	void startPlay() {
 		try {

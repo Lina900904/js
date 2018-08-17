@@ -14,8 +14,9 @@ public class AddQuery extends QueryTemplate {
 	
 	@Override
 	void initialize() {
-		
+		System.out.println("table 값~~"+map.get("table"));
 		switch ((Domain)map.get("table")) {
+		
 		case MEMBER:
 			map.put("sql", MemberQuery.ADD.toString());
 			System.out.println(map.get("sql"));
@@ -24,12 +25,9 @@ public class AddQuery extends QueryTemplate {
 			map.put("sql", ImageSQL.UPLOAD_IMG.toString());
 			System.out.println(map.get("sql"));
 			break;
-			
-
 		default:
 			break;
 		}
-		
 		
 	}
 	
@@ -38,7 +36,6 @@ public class AddQuery extends QueryTemplate {
 		try {
 			switch ((Domain)map.get("table")) {
 			case MEMBER:
-				System.out.println("addQuery 진입");
 				pstmt.setString(1, (String) map.get("userid"));
 				pstmt.setString(2, (String) map.get("password"));
 				pstmt.setString(3, (String) map.get("ssn"));
@@ -50,10 +47,10 @@ public class AddQuery extends QueryTemplate {
 				System.out.println("pstmt"+map);
 				break;
 			case IMG:
-				//pstmt.setString(1, (String) map.get("IMG_SEQ"));
-				pstmt.setString(2, img.getImgname() );
-				pstmt.setString(3, img.getExtension());
-				pstmt.setString(4, img.getId());
+				
+				pstmt.setString(1, (String) map.get("imgname"));
+				pstmt.setString(2,  (String) map.get("ext"));
+				pstmt.setString(3,  (String) map.get("id"));
 				break;
 			default:
 				break;
@@ -71,7 +68,7 @@ public class AddQuery extends QueryTemplate {
 	void endPlay() {
 
 		try {
-			pstmt.executeQuery();
+			pstmt.executeUpdate();
 			
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block

@@ -29,7 +29,6 @@ public class FileCommand extends Command{
 		setDomain(request.getServletPath().substring(1, request.getServletPath().indexOf(".")));
 		execute();
 	}
-
 	
 	@Override
 	public void execute() {
@@ -58,7 +57,7 @@ public class FileCommand extends Command{
 			System.out.println("----4 아이템 생성-----");
 			Iterator<FileItem>iter = items.iterator();
 			while (iter.hasNext()) {
-				
+
 				System.out.println("----5. while 진입-----");
 				FileItem item = (FileItem)iter.next();
 				if(!item.isFormField()) {
@@ -70,26 +69,23 @@ public class FileCommand extends Command{
 					item.write(file);
 					System.out.println("----7. 업로드 성공 ---");
 					System.out.println("업로드용 네임~~"+fileName);
-					img.setImgname(fileName.split("\\.")[0]);
-					img.setExtension(fileName.substring(fileName.lastIndexOf("\\") + 1));
-					img.setId(member.getId());
-					ImageServiceImpl.getInstance().insertImg(img);
-					System.out.println(img.getImgname());
-					System.out.println(img.getExtension());
-					System.out.println(img.getId());
+					
+
+					
+					map.put("imgname", fileName.split("\\.")[0]);
+					map.put("ext", fileName.substring(fileName.lastIndexOf("\\") + 1).split("\\.")[1]);
+					map.put("id", member.getId());
+					ImageServiceImpl.getInstance().insertImg(map);
 					
 					
 					
-					/* File file = new File(Term.UPLOAD_PATH.toString());
-					 String path = Term.UPLOAD_PATH.toString();
-					 String sep = File.separator;
-					 String ext = path.substring(path.lastIndexOf(".") + 1);
-					 String fileName = path.substring(path.lastIndexOf(sep) + 1, path.lastIndexOf("."));
-					System.out.println(path);
-					System.out.println(sep);
-					System.out.println(ext);
-					System.out.println(path);*/	
+	
+					System.out.println(map.get("imgname"));
+					System.out.println(map.get("ext"));
+					System.out.println(map.get("id"));
 					
+					
+				
 					
 					
 				}else {

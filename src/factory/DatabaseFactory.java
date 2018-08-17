@@ -6,11 +6,11 @@ import enums.Vendor;
 import pool.DBConstant;
 
 public class DatabaseFactory {
-
+	
 	public static Database createDatabase2(Map<String, Object> map) {
 		Database db = null;
 		String driver = "", url = "";
-		System.out.println("MAP~~~~~"+map.get("Vendor"));
+		System.out.println("~~~"+map.get("Vendor"));
 		switch ((Vendor) map.get("Vendor")) {
 		case ORACLE:
 			driver = DBConstant.ORACLE_DRIVER;
@@ -37,7 +37,6 @@ public class DatabaseFactory {
 		return db;
 
 	}
-
 	public static Database createDatabase(Vendor v, String id, String pass) {
 		Database db = null;
 		String driver = "", url = "";

@@ -17,7 +17,6 @@ public class RetrieveCommand extends Command{
 
 	
 
-
 	public RetrieveCommand(HttpServletRequest request){
 		setRequest(request);
 		setAction(request.getParameter("action"));
@@ -33,7 +32,7 @@ public class RetrieveCommand extends Command{
 		//img.setExtension(request.);
 		 request.setAttribute("member", MemberServiceImpl.getInstance()
 				 .retrieve(request.getParameter("id")));
-		
+		 request.setAttribute("img", ImageServiceImpl.getInstance().retrieve(request.getParameter("id")));
 		 super.execute();
 		
 		

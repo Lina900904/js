@@ -3,8 +3,10 @@ package command;
 import javax.servlet.http.HttpServletRequest;
 
 import dao.MemberDAOImpl;
+import domain.ImageBean;
 import domain.MemberBean;
 import enums.*;
+import service.ImageServiceImpl;
 import service.MemberServiceImpl;
 
 public class LoginCommand extends Command {
@@ -14,8 +16,6 @@ public class LoginCommand extends Command {
 		setDomain(request.getServletPath().substring(1, request.getServletPath().indexOf(".")));
 		setAction(request.getParameter("action"));
 		execute();
-		
-		
 	}
 	@Override
 	public void execute() {
@@ -36,6 +36,10 @@ public class LoginCommand extends Command {
 					.getInstance()
 					.retrieve(request.getParameter("userid")));
 			
+			request.getSession().setAttribute("profile", 
+					"/upload/"+ImageServiceImpl.getInstance().retrieve(lom.getId())
+					);
+			
 			System.out.println(request.getSession().getAttribute("member"));
 			//request.getSession().setAttribute("profile", arg1);
 	
@@ -45,5 +49,4 @@ public class LoginCommand extends Command {
 		}
 		
 }
-	
 }

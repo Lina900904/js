@@ -17,7 +17,6 @@ public class MemberServiceImpl implements MemeberService {
 
 	private MemberServiceImpl() {
 	}
-
 	@Override
 	public void add(MemberBean member) {
 		MemberDAOImpl.getInstance().insert(member);
@@ -54,6 +53,5 @@ public class MemberServiceImpl implements MemeberService {
 	public boolean login(MemberBean member) {
 		return MemberDAOImpl.getInstance().login(member);
 	}
-
 	
 }

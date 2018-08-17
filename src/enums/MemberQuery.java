@@ -17,7 +17,6 @@ public enum MemberQuery {
 			query= "     INSERT INTO MEMBER "
 		              + " ( id, password,ssn,name, gender, roll,   teamId, age ) "
 		              + "    VALUES ( ? , ? , ? , ? , ? , ?, ? , ?) ";
-			
 			break;
 		case 	RETRIEVE :
 			query = " SELECT " + ColumnFinder.find(Domain.MEMBER)
@@ -63,7 +62,6 @@ public enum MemberQuery {
 		break;
 
 	}
-
 	
 	
 		return query;

@@ -1,10 +1,12 @@
 package dao;
 
+import java.util.Map;
+
 import domain.ImageBean;
 
 public interface ImageDAO {
-	public void insertImg(ImageBean img);
-	public String modifyImg(String img);
+	public void insertImg(Map<?, ?> param);
+	public String retrieve(String img);
 	
 
 }
