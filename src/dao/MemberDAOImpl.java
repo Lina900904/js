@@ -91,7 +91,10 @@ public class MemberDAOImpl implements MemberDAO {
 	@Override
 	public void delete(MemberBean member) {
 		q = new RemoveQuery();
-		q.play();
+		HashMap<String, Object> map = new HashMap<>();
+		map.put("id", member.getId());
+		map.put("password", member.getPassword());
+		q.play(map);
 		
 	}
 

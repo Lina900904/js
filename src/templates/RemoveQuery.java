@@ -5,6 +5,7 @@ import java.sql.SQLException;
 
 import domain.MemberBean;
 import enums.Domain;
+import enums.MemberQuery;
 import factory.DatabaseFactory;
 import lombok.Data;
 
@@ -12,35 +13,37 @@ public class RemoveQuery extends QueryTemplate {
 
 	@Override
 	void initialize() {
-
+		
+		map.put("sql", MemberQuery.DELETE.toString());
 	
 	
 		
 	}
 
 	
+	@Override
+	void startPlay() {
+		try {
+			pstmt.setString(1,(String)map.get("id"));
+			pstmt.setString(2,(String)map.get("passwordS"));
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	
 		
+	}
+
 		
 	
 
 	@Override
 	void endPlay() {
 		try {
-			ResultSet rs = pstmt.executeQuery();
-			MemberBean mem = null;
-			while (rs.next()) {
-				mem = new MemberBean();			 
-				mem.setId(rs.getString("userid"));
-				mem.setName(rs.getString("name"));
-				mem.setPassword(rs.getString("password"));
-				mem.setSsn(rs.getString("ssn"));
-				mem.setAge(rs.getString("age"));
-				mem.setGender(rs.getString("gender"));
-				mem.setTeamId(rs.getString("teamid"));
-				mem.setRoll(rs.getString("roll"));
-				list.add(mem);
+
+			pstmt.executeQuery();
 				
-			}
+			
 			System.out.println(list);
 		} catch (Exception e) {
 			// TODO: handle exception
@@ -52,11 +55,6 @@ public class RemoveQuery extends QueryTemplate {
 
 
 
-	@Override
-	void startPlay() {
-		// TODO Auto-generated method stub
-		
-	}
 
 	
 	

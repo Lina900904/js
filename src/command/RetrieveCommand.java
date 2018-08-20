@@ -32,7 +32,11 @@ public class RetrieveCommand extends Command{
 		//img.setExtension(request.);
 		 request.setAttribute("member", MemberServiceImpl.getInstance()
 				 .retrieve(request.getParameter("id")));
-		 request.setAttribute("img", ImageServiceImpl.getInstance().retrieve(request.getParameter("id")));
+		 request.setAttribute("profile", 
+				 ImageServiceImpl.getInstance().retrieve(request.getParameter("id")));
+		 
+		 
+		 
 		 super.execute();
 		
 		

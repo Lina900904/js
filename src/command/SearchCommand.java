@@ -24,6 +24,13 @@ public class SearchCommand extends Command{
 	
 	}
 	
+	// 팀검색, 이름검색, 아이디
+	
+	
+	
+	
+	
+	
 	@Override
 	public void execute() {
 		Map<String,String> paramMap = new HashMap<>();
